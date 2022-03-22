@@ -68,93 +68,23 @@ var state = {
     MBonRandom: 1.000,
 }
 
-var statebase = {
-    AnzahlGeld: 0,
-    AnzahlErdnüsse: 0,
-    AnzahlErdnussbäume: 0,
-    AnzahlErdnussplantagen: 0,
-    GeldproKlick: 0.1,
-    GeldproSekunde: 0,
-    ErdnussproKlick: 1,
-    ErdnussbaumproKlick: 1,
-    ErdnussplantageproKlick: 1,
-    ErdnüsseproSekunde: 0,
-    ErdnussbäumeproSekunde: 0,
-    PreisErdnüsse: 1,
-    PreisErdnussbäume: 10,
-    PreisErdnussplantagen: 10,
-    PreisGeldDoppel: 12.5,
-    PreisErdnussDoppel: 50.0,
-    PreisErdnussbaumDoppel: 200.0,
-    PreisErdnussplantageDoppel: 800.0,
-    PreisAutoSell: 25,
-    PreisAutoSellEP: 1,
-    PreisBessererPreis: 100,
-    PreisZeitFormen: 10000,
-    PreisRushUpgrade: 10000,
-    PreisGeduldUpgrade: 25000,
-    PreisBessereQualitätBonsai: 25000,
-    PreisCBonsai: 2000,
-    PreisUBonsai: 5000,
-    PreisSBonsai: 20000,
-    PreisLBonsai: 100000,
-    GeldAutoSell: 1,
-    Random: 0,
-    output: 0,
-    BonsaiGrowth: 0,
-    BonsaiGrowing: 0,
-    ZeitFormen: 300,
-    AnzahlCBonsais: 0,
-    AnzahlUBonsais: 0,
-    AnzahlSBonsais: 0,
-    AnzahlLBonsais: 0,
-    AnzahlMBonsais: 0,
-    GeldAutoSell: 0.1,
-    ErdnussPreisAll: 0.1,
-    RushCycle: 1,
-    RushCycles: 0,
-    GeduldCycle: 1,
-    GeduldCycles: 0,
-    RushUpgrade: 0,
-    GeduldUpgrade: 0,
-    QualitätUpgrade: 0,
-    CBonBase: 62.0,
-    UBonBase: 26.0,
-    SBonBase: 10.0,
-    LBonBase: 2.0,
-    MBonBase: 0.0,
-    CBonShow: 62.0,
-    UBonShow: 26.0,
-    SBonShow: 10.0,
-    LBonShow: 2.0,
-    MBonShow: 0.0,
-    UBonRandomBase: 0.620,
-    SBonRandomBase: 0.880,
-    LBonRandomBase: 0.980,
-    MBonRandomBase: 1.000,
-    UBonRandom: 0.620,
-    SBonRandom: 0.880,
-    LBonRandom: 0.980,
-    MBonRandom: 1.000,
-}
-
 function save() {
     localStorage.setItem('state', JSON.stringify(state));
-    document.getElementById("Storage").innerText ="Started";
+    document.getElementById("Storage").innerText ="Saved";
 }
 
 function reset() {
-    localStorage.setItem('state', JSON.stringify(statebase)); //Save Base Values into local Storage
+    storage.clear(); //LocalStorage cleared
     document.location.reload(true)
 }
 
 window.onload = function () {
     if (localStorage.getItem('state') == null) {
-    document.getElementById("Storage").innerText ='null';    
+    document.getElementById("Storage").innerText ='New';    
      }
     else {
     state = JSON.parse(localStorage.getItem('state'));
-    document.getElementById("Storage").innerText ='gestartet';  
+    document.getElementById("Storage").innerText ='Loaded';  
     }
 }
 
