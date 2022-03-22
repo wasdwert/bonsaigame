@@ -1,3 +1,5 @@
+$(document.body).ready(
+    $(function() {
 var state = {
     AnzahlGeld: 0,
     AnzahlErdnüsse: 0,
@@ -1329,3 +1331,5 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
         }
     });
 }, 100)
+ });
+);
