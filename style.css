@@ -1,0 +1,111 @@
+#Button {
+    width: 250px;
+	height: 50px;
+	box-shadow: 0 4px 8px 0 #3188cc;
+	border-radius: 8px;
+	transition-duration: 0.3s;
+	cursor: pointer; 
+}
+
+#Feld {
+    border: 2px solid powderblue;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.itemContainer {
+    display: flex; /* using flexbox to align items */
+    flex-wrap: wrap; /* to force items on multiple lines */
+}
+
+.item {
+    padding: 0px; /* some spacing around */
+    flex: 25%; /* to put 4 items on each line (100/4 = 25) */
+}
+
+.Bonsais {
+    padding: 0px; /* some spacing around */
+    margin: auto;
+    width: 20%;
+}
+
+.PreisGeldDoppel {
+    display:none;
+}
+
+.Erdnüsse {
+    display:none;
+}
+
+.PreisErdnussDoppel {
+    display:none;
+}
+
+.Erdnussbäume {
+    display:none;
+}
+
+.PreisErdnussbaumDoppel {
+    display:none;
+}
+
+.Erdnussplantagen {
+    display:none;
+}
+
+.PreisErdnussplantageDoppel {
+    display:none;
+}
+
+.Erdnusshandel {
+    display:none;
+}
+
+.Erdnusshandel100 {
+    display:none;
+}
+
+.Erdnusshandel200 {
+    display:none;
+}
+
+.Erdnusshandel1000 {
+    display:none;
+}
+
+.Upgrades {
+    display:none;
+}
+
+.AutoSell {
+    display:none;
+}
+
+.BessererPreis {
+    display:none;
+}
+
+.Bonsai {
+    display:none;
+}
+
+.Bonsaihandel {
+    display:none;
+}
+
+.CBonsaiverkaufen {
+    display:none;
+}
+
+.UBonsaiverkaufen {
+    display:none;
+}
+
+.SBonsaiverkaufen {
+    display:none;
+}
+
+.LBonsaiverkaufen {
+    display:none;
+}
