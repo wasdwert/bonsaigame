@@ -148,16 +148,6 @@ function reset() {
     document.location.reload(true)
 }
 
-window.onload = function () {
-    if (localStorage.getItem('state') === null) {
-    document.getElementById("Storage").innerText ='null';    
-     }
-    else {
-    state = JSON.parse(localStorage.getItem('state'));
-    document.getElementById("Storage").innerText ='gestartet';  
-    }
-}
-
 setInterval(function() {
     localStorage.setItem('state', JSON.stringify(state));
     document.getElementById("Storage").innerText ="Autosaved";
