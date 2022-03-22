@@ -149,12 +149,12 @@ function reset() {
 }
 
 window.onload = function () {
-    if ("state" in localStorage) {
-    state = JSON.parse(localStorage.getItem('state'));
-    document.getElementById("Storage").innerText ='gestartet';    
-    }
+    if (localStorage.getItem('state') === null) {
+    document.getElementById("Storage").innerText ='null';    
+     }
     else {
-    document.getElementById("Storage").innerText ='null';   
+    state = JSON.parse(localStorage.getItem('state'));
+    document.getElementById("Storage").innerText ='gestartet';  
     }
 }
 
