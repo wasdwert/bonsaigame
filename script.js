@@ -149,8 +149,13 @@ function reset() {
 }
 
 window.onload = function () {
+    if (localStorage.getItem("state")=="null") {
+        
+    }
+    else {
     state = JSON.parse(localStorage.getItem('state'));
     document.getElementById("Storage").innerText ='gestartet';
+    }
 }
 
 setInterval(function() {
@@ -1327,5 +1332,5 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
         if(state.AnzahlLBonsais>=1){
             $('.LBonsaiverkaufen').show();
         }
-    })
+    });
 }, 100)
