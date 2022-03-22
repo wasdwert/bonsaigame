@@ -74,17 +74,95 @@ function save() {
 }
 
 function reset() {
-    storage.clear(); //LocalStorage cleared
+    localStorage.clear(); //LocalStorage cleared
     document.location.reload(true)
 }
 
 window.onload = function () {
     if (localStorage.getItem('state') == null) {
-    document.getElementById("Storage").innerText ='New';    
+        document.getElementById("Storage").innerText ='New';    
      }
     else {
-    state = JSON.parse(localStorage.getItem('state'));
-    document.getElementById("Storage").innerText ='Loaded';  
+        state = JSON.parse(localStorage.getItem('state'));
+        document.getElementById("Storage").innerText ='Loaded';
+        document.getElementById("ErdnüssepS").innerText =state.ErdnüsseproSekunde.toFixed(2);
+        document.getElementById("ErdnussbäumepS").innerText =state.ErdnussbäumeproSekunde.toFixed(2);
+        document.getElementById("Geld").innerText =state.AnzahlGeld.toFixed(2);
+        document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toFixed(2);
+        document.getElementById("Erdnussbäume").innerText =state.AnzahlErdnussbäume.toFixed(2);
+        document.getElementById("Erdnussplantagen").innerText = state.AnzahlErdnussplantagen;
+        document.getElementById("MBonsais").innerText =state.AnzahlMBonsais;
+        document.getElementById("LBonsais").innerText =state.AnzahlLBonsais;
+        document.getElementById("SBonsais").innerText =state.AnzahlSBonsais;
+        document.getElementById("UBonsais").innerText =state.AnzahlUBonsais;
+        document.getElementById("CBonsais").innerText =state.AnzahlCBonsais;
+        document.getElementById("RushCycle").innerText =state.RushCycle; //Delete later
+        document.getElementById("RushCycles").innerText =state.RushCycles; //Delete later
+        document.getElementById("GeduldCycle").innerText =state.GeduldCycle; //Delete later
+        document.getElementById("GeduldCycles").innerText =state.GeduldCycles; //Delete later
+        document.getElementById("CBon").innerText =state.CBonShow;
+        document.getElementById("UBon").innerText =state.UBonShow;
+        document.getElementById("SBon").innerText =state.SBonShow;
+        document.getElementById("LBon").innerText =state.LBonShow;
+        document.getElementById("MBon").innerText =state.MBonShow;
+        document.getElementById("UBonRandom").innerText =state.UBonRandom; //Delete later
+        document.getElementById("SBonRandom").innerText =state.SBonRandom; //Delete later
+        document.getElementById("LBonRandom").innerText =state.LBonRandom; //Delete later
+        document.getElementById("MBonRandom").innerText =state.MBonRandom; //Delete later
+        document.getElementById("UBonRandomBase").innerText =state.UBonRandomBase; //Delete later
+        document.getElementById("SBonRandomBase").innerText =state.UBonRandomBase; //Delete later
+        document.getElementById("LBonRandomBase").innerText =state.UBonRandomBase; //Delete later
+        document.getElementById("MBonRandomBase").innerText =state.UBonRandomBase; //Delete later
+        document.getElementById("KostenErdnuss").innerText =state.PreisErdnüsse
+        document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume)
+        document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen)
+        document.getElementById("KlickGeld").innerText =state.GeldproKlick.toFixed(1);
+        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel);
+        document.getElementById("KlickErdnuss").innerText =state.ErdnussproKlick;
+        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel;
+        document.getElementById("KlickErdnussbaum").innerText =state.ErdnussbaumproKlick;
+        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel;
+        document.getElementById("KlickErdnussplantage").innerText =state.ErdnussplantageproKlick;
+        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel;
+        document.getElementById("PreisWenigerZeitFormen").innerText =state.PreisZeitFormen;
+        document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen-15);
+        if (state.ZeitFormen==150) {
+            document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen);
+            document.getElementById("WenigerZeitMax").innerText ="Max. Upgrade erreicht";
+        }
+        document.getElementById("ErdnussPreis").innerText =state.ErdnussPreisAll.toFixed(2);
+        document.getElementById("PreisBessererPreis").innerText =state.PreisBessererPreis;
+        if (state.ErdnussPreisAll>=0.3) {
+            document.getElementById("PreisBessererPreisMax").innerText ="Max. Upgrade erreicht";
+        }
+        document.getElementById("GeldproSekunde").innerText =state.GeldproSekunde.toFixed(1);
+        document.getElementById("PreisAutoSell").innerText =state.PreisAutoSell;
+        document.getElementById("PreisAutoSellEP").innerText =state.PreisAutoSellEP;
+        document.getElementById("AutoSellErdnuss").innerText =prettify(state.GeldproSekunde+state.GeldAutoSell).toFixed(1);
+        document.getElementById("PreisRushUpgrade").innerText =state.PreisRushUpgrade;
+        if (state.RushUpgrade>=10) {
+            document.getElementById("RushUpgradeMax").innerText ="Max. Upgrade erreicht";
+        }
+        document.getElementById("PreisGeduldUpgrade").innerText =state.PreisGeduldUpgrade;
+        if (state.GeduldUpgrade>=10) {
+                document.getElementById("GeduldUpgradeMax").innerText ="Max. Upgrade erreicht";
+        }
+        document.getElementById("PreisBessereQualitätBonsai").innerText =state.PreisBessereQualitätBonsai;
+        if (state.QualitätUpgrade>=10) {
+            document.getElementById("BessereQualitätMax").innerText ="Max. Upgrade erreicht";
+        }
+        if (BonsaiGrowing==1) {
+        document.getElementById("ZeitBonsaiheranziehen").innerText =Zeit(state.BonsaiGrowth);
+        document.getElementById("Bonsaiheranziehen").innerText ="aktiv";
+        }
+        document.getElementById("CBonsais").innerText = state.AnzahlCBonsais;
+        document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toFixed(2)
+        document.getElementById("UBonsais").innerText = state.AnzahlCBonsais;
+        document.getElementById("PreisUBonsai").innerText = state.PreisCBonsai.toFixed(2)
+        document.getElementById("SBonsais").innerText = state.AnzahlCBonsais;
+        document.getElementById("PreisSBonsai").innerText = state.PreisCBonsai.toFixed(2)
+        document.getElementById("LBonsais").innerText = state.AnzahlCBonsais;
+        document.getElementById("PreisLBonsai").innerText = state.PreisCBonsai.toFixed(2)     
     }
 }
 
@@ -156,6 +234,10 @@ setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekund
             document.getElementById("RushCycle").innerText =state.RushCycle; //Delete later
             state.RushCycles =0;
             document.getElementById("RushCycles").innerText =state.RushCycles; //Delete later
+            state.GeduldCycle =1;
+            document.getElementById("GeduldCycle").innerText =state.GeduldCycle; //Delete later
+            state.GeduldCycles =0;
+            document.getElementById("GeduldCycles").innerText =state.GeduldCycles; //Delete later
             state.CBonShow =state.CBonBase;
             document.getElementById("CBon").innerText =state.CBonShow;
             state.UBonShow =state.UBonBase;
@@ -174,6 +256,12 @@ setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekund
             document.getElementById("SBonRandom").innerText =state.SBonRandom; //Delete later
             document.getElementById("LBonRandom").innerText =state.LBonRandom; //Delete later
             document.getElementById("MBonRandom").innerText =state.MBonRandom; //Delete later
+            if (state.RushCycles>9.5) {
+                    document.getElementById("RushCycleText").innerText ="Maximum erreicht";
+            }
+            if (state.GeduldCycles>9.5) {
+                    document.getElementById("GeduldCycleText").innerText ="Maximum erreicht";
+            }
         }
     }
 }, 1000)
@@ -212,7 +300,7 @@ function Erdnusskaufen() {
         state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse+state.ErdnussproKlick);
         document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toFixed(2);
         state.PreisErdnüsse=prettifyzwei(state.PreisErdnüsse*1.01);
-        document.getElementById("KostenErdnuss").innerText =state.PreisErdnüsse
+        document.getElementById("KostenErdnuss").innerText =state.PreisErdnüsse;
     } 
 }
 
@@ -223,7 +311,7 @@ function Erdnussbaumpflanzen() {
         state.AnzahlErdnussbäume =prettifyzwei(state.AnzahlErdnussbäume+state.ErdnussbaumproKlick);
         document.getElementById("Erdnussbäume").innerText =state.AnzahlErdnussbäume.toFixed(2);
         state.PreisErdnussbäume=prettify(state.PreisErdnussbäume*1.05);
-        document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume)
+        document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume);
     } 
 }
 
@@ -234,7 +322,7 @@ function Erdnussplantageanbauen() {
         state.AnzahlErdnussplantagen +=state.ErdnussplantageproKlick;
         document.getElementById("Erdnussplantagen").innerText = state.AnzahlErdnussplantagen;
         state.PreisErdnussplantagen =prettify(state.PreisErdnussplantagen*1.1);
-        document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen)
+        document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen);
     } 
 }
 
