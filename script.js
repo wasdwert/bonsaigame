@@ -36,7 +36,7 @@ var state = {
     ZeitFormen: 300,
     AnzahlCBonsais: 0,
     AnzahlUBonsais: 0,
-    AnzahlSBonsais: 2,
+    AnzahlSBonsais: 0,
     AnzahlLBonsais: 0,
     AnzahlMBonsais: 0,
     ErdnussPreisAll: 0.1,
