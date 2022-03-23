@@ -66,9 +66,39 @@ var state = {
     SBonRandom: 0.880,
     LBonRandom: 0.980,
     MBonRandom: 1.000,
+    zeitjetzt: 0,
+    zeitsave: 0,
+    zeitautosave: 0,
+    zeitsincesave: 0,
+    zeittillautosave: 0,
+    Geldwhileaway: 0,
+    Erdnüssewhileaway: 0,
+    Erdnussbäumewhileaway: 0,
+    Bonsaiwhileaway: 0,
+    PreisGeldDoppelShow: 0,  
+    ErdnüsseShow: 0,
+    PreisErdnussDoppelShow: 0,
+    ErdnussbäumeShow: 0,
+    PreisErdnussbaumDoppelShow: 0,
+    ErdnussplantagenShow: 0,
+    PreisErdnussplantageDoppelShow: 0,
+    ErdnusshandelShow: 0,
+    Erdnusshandel100Show: 0,
+    Erdnusshandel200Show: 0,
+    Erdnusshandel1000Show: 0,
+    UpgradesShow: 0,
+    AutoSellShow: 0,
+    BessererPreisShow: 0,
+    BonsaiShow: 0,
+    BonsaihandelShow: 0,
+    CBonsaiverkaufenShow: 0,
+    UBonsaiverkaufenShow: 0,
+    SBonsaiverkaufenShow: 0,
+    LBonsaiverkaufenShow: 0,
 }
 
 function save() {
+    state.zeitsave = Date.now();
     localStorage.setItem('state', JSON.stringify(state));
     document.getElementById("Storage").innerText ="Saved";
 }
@@ -80,11 +110,69 @@ function reset() {
 
 window.onload = function () {
     if (localStorage.getItem('state') == null) {
-        document.getElementById("Storage").innerText ='New';    
+        document.getElementById("Storage").innerText ='New';
+        state.zeitsave = Date.now();
+        state.zeitautosave = Date.now();
+        state.zeitautosave +=30000;
      }
     else {
         state = JSON.parse(localStorage.getItem('state'));
         document.getElementById("Storage").innerText ='Loaded';
+        state.zeitjetzt = Date.now();
+        state.zeitautosave = Date.now();
+        state.zeitautosave +=30000;
+        state.zeitsincesave = Math.floor(state.zeitjetzt/1000) - Math.floor(state.zeitsave/1000);
+        document.getElementById("ZeitlastSave").innerText =state.zeitsincesave;
+        if (state.ErdnüsseproSekunde>0) {
+            state.Erdnüssewhileaway =prettifyzwei(state.ErdnüsseproSekunde*state.zeitsincesave);
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse+state.Erdnüssewhileaway);
+        }
+        if (state.ErdnussbäumeproSekunde>0) {
+            state.Erdnussbäumewhileaway =prettifyzwei(state.ErdnussbäumeproSekunde*state.zeitsincesave);
+            state.AnzahlErdnussbäume =prettifyzwei(state.AnzahlErdnussbäume+state.Erdnussbäumewhileaway);
+        }
+        if (state.GeldproSekunde>0) {
+            state.Geldwhileaway =prettifyzwei(state.GeldproSekunde*state.zeitsincesave);
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.Geldwhileaway);
+        }   
+        if (state.BonsaiGrowing==1) {
+            if (state.BonsaiGrowth<state.zeitsincesave) {
+                state.Bonsaiwhileaway =1;
+                state.BonsaiGrowth =0;
+                if (state.Random>=prettifydrei(state.MBonRandom)) {
+                    state.AnzahlMBonsais +=1;
+                }
+                else if (state.Random>=prettifydrei(state.LBonRandom)) {
+                    state.AnzahlLBonsais +=1;
+                }
+                else if (state.Random>=prettifydrei(state.SBonRandom)) {
+                    state.AnzahlSBonsais +=1;
+                }
+                else if (state.Random>=prettifydrei(state.UBonRandom)) {
+                    state.AnzahlUBonsais +=1;
+                }
+                else {
+                    state.AnzahlCBonsais +=1;
+                }  
+                state.BonsaiGrowing=0
+                state.RushCycle =1;
+                state.RushCycles =0;
+                state.GeduldCycle =1;
+                state.GeduldCycles =0;
+                state.CBonShow =state.CBonBase;
+                state.UBonShow =state.UBonBase;
+                state.SBonShow =state.SBonBase;
+                state.LBonShow =state.LBonBase;
+                state.MBonShow =state.MBonBase;
+                state.UBonRandom =state.UBonRandomBase;
+                state.SBonRandom =state.SBonRandomBase;
+                state.LBonRandom =state.LBonRandomBase;
+                state.MBonRandom =state.MBonRandomBase;
+            }
+            else {
+                state.BonsaiGrowth -=state.zeitsincesave;
+            }
+        } 
         document.getElementById("ErdnüssepS").innerText =state.ErdnüsseproSekunde.toFixed(2);
         document.getElementById("ErdnussbäumepS").innerText =state.ErdnussbäumeproSekunde.toFixed(2);
         document.getElementById("Geld").innerText =state.AnzahlGeld.toFixed(2);
@@ -151,7 +239,7 @@ window.onload = function () {
         if (state.QualitätUpgrade>=10) {
             document.getElementById("BessereQualitätMax").innerText ="Max. Upgrade erreicht";
         }
-        if (BonsaiGrowing==1) {
+        if (state.BonsaiGrowing==1) {
         document.getElementById("ZeitBonsaiheranziehen").innerText =Zeit(state.BonsaiGrowth);
         document.getElementById("Bonsaiheranziehen").innerText ="aktiv";
         }
@@ -162,13 +250,149 @@ window.onload = function () {
         document.getElementById("SBonsais").innerText = state.AnzahlCBonsais;
         document.getElementById("PreisSBonsai").innerText = state.PreisCBonsai.toFixed(2)
         document.getElementById("LBonsais").innerText = state.AnzahlCBonsais;
-        document.getElementById("PreisLBonsai").innerText = state.PreisCBonsai.toFixed(2)     
+        document.getElementById("PreisLBonsai").innerText = state.PreisCBonsai.toFixed(2)
+        if (state.RushCycles>9.5) {
+            document.getElementById("RushCycleText").innerText ="Maximum erreicht";
+        }
+        if (state.GeduldCycles>9.5) {
+            document.getElementById("GeduldCycleText").innerText ="Maximum erreicht";
+        }
+        $(document).ready(function(){
+            if(state.PreisGeldDoppelShow==1){
+                $('.PreisGeldDoppel').show();
+            }
+            if(state.ErdnüsseShow==1){
+                $('.Erdnüsse').show();
+            }
+            if(state.PreisErdnussDoppelShow==1){
+                $('.PreisErdnussDoppel').show();
+            }
+            if(state.ErdnussbäumeShow==1){
+                $('.Erdnussbäume').show();
+            }
+            if(state.PreisErdnussbaumDoppelShow==1){
+                $('.PreisErdnussbaumDoppel').show();
+            }
+            if(state.ErdnussplantagenShow==1){
+                $('.Erdnussplantagen').show();
+            }
+            if(state.PreisErdnussplantageDoppelShow==1){
+                $('.PreisErdnussplantageDoppel').show();
+            }
+            if(state.ErdnusshandelShow==1){
+                $('.Erdnusshandel').show();
+            }
+            if(state.Erdnusshandel100Show==1){
+                $('.Erdnusshandel100').show();
+            }
+            if(state.Erdnusshandel200Show==1){
+                $('.Erdnusshandel200').show();
+            }
+            if(state.Erdnusshandel1000Show==1){
+                $('.Erdnusshandel1000').show();
+            }
+            if(state.UpgradesShow==1){
+                $('.Upgrades').show();
+            }
+            if(state.AutoSellShow==1){
+                $('.AutoSell').show();
+            }
+            if(state.BessererPreisShow==1){
+                $('.BessererPreis').show();
+            }
+            if(state.BonsaiShow==1){
+                $('.Bonsai').show();
+            }
+            if(state.BonsaihandelShow==1){
+                $('.Bonsaihandel').show();
+            }
+            if(state.CBonsaiverkaufenShow==1){
+                $('.CBonsaiverkaufen').show();
+            }
+            if(state.UBonsaiverkaufenShow==1){
+                $('.UBonsaiverkaufen').show();
+            }
+            if(state.SBonsaiverkaufenShow==1){
+                $('.SBonsaiverkaufen').show();
+            }
+            if(state.LBonsaiverkaufenShow==1){
+                $('.LBonsaiverkaufen').show();
+            }
+        });
+        if (state.Geldwhileaway>0) {
+            if (state.Erdnüssewhileaway>0) {
+                if (state.Erdnussbäumewhileaway>0) {
+                    if (state.Bonsaiwhileaway>0) {
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.\nA bonsai grew!");  
+                    }
+                    else {
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.");
+                    }
+                }
+                else {
+                    if (state.Bonsaiwhileaway>0) {
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nA bonsai grew!");  
+                    }
+                    else {
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\n");
+                    }
+                }
+            }
+            else {
+                if (state.Bonsaiwhileaway>0) {
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nA bonsai grew!");  
+                }
+                else {
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\n");
+                }
+            }
+        }
+        else if (state.Erdnüssewhileaway>0) {
+            if (state.Erdnussbäumewhileaway>0) {
+                if (state.Bonsaiwhileaway>0) {
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.\nA bonsai grew!");  
+                }
+                else {
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.");
+                }
+            }
+            else {
+                if (state.Bonsaiwhileaway>0) {
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nA bonsai grew! ");  
+                }
+                else {
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\n");
+                }
+            }
+        }
+        else if (state.Erdnussbäumewhileaway>0) {
+            if (state.Bonsaiwhileaway>0) {
+                alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.\nA bonsai grew!");  
+            }
+            else {
+                alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.");
+            }
+        }
+        else {
+            if (state.Bonsaiwhileaway>0) {
+                alert("You have been "+ state.zeitsincesave +" seconds away.A bonsai grew!");  
+            }
+            else {
+                alert("You have been "+ state.zeitsincesave +" seconds away.");
+            }
+        }
+        state.Geldwhileaway =0;
+        state.Erdnüssewhileaway =0;
+        state.Erdnussbäumewhileaway =0;
+        state.Bonsaiwhileaway =0;  
     }
 }
 
-setInterval(function() {
-    localStorage.setItem('state', JSON.stringify(state));
+setInterval(function () {
+    save();
     document.getElementById("Storage").innerText ="Autosaved";
+    state.zeitautosave = new Date
+    state.zeitautosave.setSeconds(state.zeitautosave.getSeconds()+30);
 }, 30000)
 
 setInterval(function() {
@@ -196,6 +420,10 @@ setInterval(function() {
 }, 100)
 
 setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekunde
+    state.zeitjetzt = Date.now();
+    state.zeittillautosave = Math.floor(state.zeitautosave/1000) - Math.floor(state.zeitjetzt/1000);
+    document.getElementById("ZeitAutosave").innerText =state.zeittillautosave;
+    document.getElementById("ZeitlastSave").innerText =state.zeitsincesave;
     state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.GeldproSekunde);
     document.getElementById("Geld").innerText =state.AnzahlGeld.toFixed(2);
     state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse+state.ErdnüsseproSekunde);
@@ -256,12 +484,6 @@ setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekund
             document.getElementById("SBonRandom").innerText =state.SBonRandom; //Delete later
             document.getElementById("LBonRandom").innerText =state.LBonRandom; //Delete later
             document.getElementById("MBonRandom").innerText =state.MBonRandom; //Delete later
-            if (state.RushCycles>9.5) {
-                    document.getElementById("RushCycleText").innerText ="Maximum erreicht";
-            }
-            if (state.GeduldCycles>9.5) {
-                    document.getElementById("GeduldCycleText").innerText ="Maximum erreicht";
-            }
         }
     }
 }, 1000)
@@ -1292,63 +1514,83 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
     $(document).ready(function(){
         if(state.AnzahlGeld>=12.5){
             $('.PreisGeldDoppel').show();
+            state.PreisGeldDoppelShow =1;
         }
         if(state.AnzahlGeld>=1){
             $('.Erdnüsse').show();
+            state.ErdnüsseShow =1;
         }
         if(state.AnzahlGeld>=50){
             $('.PreisErdnussDoppel').show();
+            state.PreisErdnussDoppelShow =1;
         }
         if(state.AnzahlErdnüsse>=10){
             $('.Erdnussbäume').show();
+            state.ErdnussbäumeShow =1;
         }
         if(state.AnzahlGeld>=200 & state.AnzahlErdnüsse>=10){
             $('.PreisErdnussbaumDoppel').show();
+            state.PreisErdnussbaumDoppelShow =1;
         }
         if(state.AnzahlErdnussbäume>=10){
             $('.Erdnussplantagen').show();
+            state.ErdnussplantagenShow =1;
         }
         if(state.AnzahlGeld>=800 & state.AnzahlErdnussbäume>=10){
             $('.PreisErdnussplantageDoppel').show();
+            state.PreisErdnussplantageDoppelShow =1;
         }
         if(state.AnzahlErdnüsse>=10){
             $('.Erdnusshandel').show();
+            state.ErdnusshandelShow =1;
         }
         if(state.AnzahlErdnüsse>=100){
             $('.Erdnusshandel100').show();
+            state.Erdnusshandel100Show =1;
         }
         if(state.AnzahlErdnüsse>=200){
             $('.Erdnusshandel200').show();
+            state.Erdnusshandel200Show =1;
         }
         if(state.AnzahlErdnüsse>=1000){
             $('.Erdnusshandel1000').show();
+            state.Erdnusshandel1000Show =1;
         }
         if(state.AnzahlErdnussbäume>=25 & state.AnzahlErdnussplantagen>=1 || state.AnzahlGeld>=1000 || state.AnzahlErdnüsse>=100){
             $('.Upgrades').show();
+            state.UpgradesShow= 1;
         }
         if(state.AnzahlErdnussbäume>=25 & state.AnzahlErdnussplantagen>=1){
             $('.AutoSell').show();
+            state.AutoSellShow =1;
         }
         if(state.AnzahlErdnüsse>=100){
             $('.BessererPreis').show();
+            state.BessererPreisShow =1;
         }
         if(state.AnzahlGeld>=1000){
             $('.Bonsai').show();
+            state.BonsaiShow =1;
         }
         if(state.AnzahlCBonsais>=1 || state.AnzahlUBonsais>=1 || state.AnzahlSBonsais>=1 || state.AnzahlLBonsais>=1){
             $('.Bonsaihandel').show();
+            state.BonsaihandelShow =1;
         }
         if(state.AnzahlCBonsais>=1){
             $('.CBonsaiverkaufen').show();
+            state.CBonsaiverkaufenShow =1;
         }
         if(state.AnzahlUBonsais>=1){
             $('.UBonsaiverkaufen').show();
+            state.UBonsaiverkaufenShow =1;
         }
         if(state.AnzahlSBonsais>=1){
             $('.SBonsaiverkaufen').show();
+            state.SBonsaiverkaufenShow =1;
         }
         if(state.AnzahlLBonsais>=1){
             $('.LBonsaiverkaufen').show();
+            state.LBonsaiverkaufenShow =1;
         }
     });
 }, 100)
