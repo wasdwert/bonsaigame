@@ -134,7 +134,7 @@ window.onload = function () {
             state.Geldwhileaway =prettifyzwei(state.GeldproSekunde*state.zeitsincesave);
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.Geldwhileaway);
         }   
-        if (state.BonsaiGrowing==1) {
+        if (state.BonsaiGrowing=1) {
             if (state.BonsaiGrowth<state.zeitsincesave) {
                 state.Bonsaiwhileaway =1;
                 state.BonsaiGrowth =0;
