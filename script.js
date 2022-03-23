@@ -65,11 +65,11 @@ var state = {
     SBonRandom: 0.820,
     LBonRandom: 0.977,
     MBonRandom: 0.999,
-    zeitjetzt: 0,
-    zeitsave: 0,
-    zeitautosave: 0,
-    zeitsincesave: 0,
-    zeittillautosave: 0,
+    zeitjetzt: 1648027253,
+    zeitsave: 1648027253,
+    zeitautosave: 1648027253,
+    zeitsincesave: 1648027253,
+    zeittillautosave: 1648027253,
     Geldwhileaway: 0,
     Erdnüssewhileaway: 0,
     Erdnussbäumewhileaway: 0,
@@ -134,7 +134,7 @@ window.onload = function () {
             state.Geldwhileaway =prettifyzwei(state.GeldproSekunde*state.zeitsincesave);
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.Geldwhileaway);
         }   
-        if (state.BonsaiGrowing=1) {
+        if (state.BonsaiGrowing==1) {
             if (state.BonsaiGrowth<state.zeitsincesave) {
                 state.Bonsaiwhileaway =1;
                 state.BonsaiGrowth =0;
@@ -374,7 +374,7 @@ window.onload = function () {
         }
         else {
             if (state.Bonsaiwhileaway>0) {
-                alert("You have been "+ state.zeitsincesave +" seconds away.A bonsai grew!");  
+                alert("You have been "+ state.zeitsincesave +" seconds away.\nA bonsai grew!");  
             }
             else {
                 alert("You have been "+ state.zeitsincesave +" seconds away.");
