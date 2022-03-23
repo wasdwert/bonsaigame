@@ -244,12 +244,12 @@ window.onload = function () {
         }
         document.getElementById("CBonsais").innerText = state.AnzahlCBonsais;
         document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toFixed(2)
-        document.getElementById("UBonsais").innerText = state.AnzahlCBonsais;
-        document.getElementById("PreisUBonsai").innerText = state.PreisCBonsai.toFixed(2)
-        document.getElementById("SBonsais").innerText = state.AnzahlCBonsais;
-        document.getElementById("PreisSBonsai").innerText = state.PreisCBonsai.toFixed(2)
-        document.getElementById("LBonsais").innerText = state.AnzahlCBonsais;
-        document.getElementById("PreisLBonsai").innerText = state.PreisCBonsai.toFixed(2)
+        document.getElementById("UBonsais").innerText = state.AnzahlUBonsais;
+        document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai.toFixed(2)
+        document.getElementById("SBonsais").innerText = state.AnzahlSBonsais;
+        document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toFixed(2)
+        document.getElementById("LBonsais").innerText = state.AnzahlLBonsais;
+        document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai.toFixed(2)
         if (state.RushCycles>9.5) {
             document.getElementById("RushCycleText").innerText ="Maximum erreicht";
         }
