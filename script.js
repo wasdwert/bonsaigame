@@ -36,7 +36,7 @@ var state = {
     ZeitFormen: 300,
     AnzahlCBonsais: 0,
     AnzahlUBonsais: 0,
-    AnzahlSBonsais: 0,
+    AnzahlSBonsais: 2,
     AnzahlLBonsais: 0,
     AnzahlMBonsais: 0,
     ErdnussPreisAll: 0.1,
@@ -197,9 +197,9 @@ window.onload = function () {
         document.getElementById("LBonRandom").innerText =state.LBonRandom; //Delete later
         document.getElementById("MBonRandom").innerText =state.MBonRandom; //Delete later
         document.getElementById("UBonRandomBase").innerText =state.UBonRandomBase; //Delete later
-        document.getElementById("SBonRandomBase").innerText =state.UBonRandomBase; //Delete later
-        document.getElementById("LBonRandomBase").innerText =state.UBonRandomBase; //Delete later
-        document.getElementById("MBonRandomBase").innerText =state.UBonRandomBase; //Delete later
+        document.getElementById("SBonRandomBase").innerText =state.SBonRandomBase; //Delete later
+        document.getElementById("LBonRandomBase").innerText =state.LBonRandomBase; //Delete later
+        document.getElementById("MBonRandomBase").innerText =state.MBonRandomBase; //Delete later
         document.getElementById("KostenErdnuss").innerText =state.PreisErdnüsse
         document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume)
         document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen)
@@ -1487,10 +1487,10 @@ function SBonsaiverkaufen () {
     if (state.AnzahlSBonsais>=1) {
         state.AnzahlSBonsais -=1;
         document.getElementById("SBonsais").innerText =state.AnzahlSBonsais;
-        AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisSBonsai);
+        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisSBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toFixed(2);
         if (state.PreisSBonsai>3000) {
-            state.PreisSBonsai =prettify(state.PreisSBonsai-1062,5);
+            state.PreisSBonsai =prettify(state.PreisSBonsai-1062.5);
             document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toFixed(2)
         }
     }
