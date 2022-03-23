@@ -1,5 +1,5 @@
 var state = {
-    AnzahlGeld: 0,
+    AnzahlGeld: 1000,
     AnzahlErdnüsse: 0,
     AnzahlErdnussbäume: 0,
     AnzahlErdnussplantagen: 0,
@@ -457,6 +457,7 @@ setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekund
             document.getElementById("ZeitBonsaiheranziehen").innerText ="-";
             document.getElementById("Bonsaiheranziehen").innerText ="nicht aktiv";
             document.getElementById("RushCycleText").innerText ="- 1 Sekunde";
+            document.getElementById("GeduldCycleText").innerText ="+ 5 Sekunde";
             state.RushCycle =1;
             document.getElementById("RushCycle").innerText =state.RushCycle; //Delete later
             state.RushCycles =0;
@@ -1069,6 +1070,7 @@ function BonsaiRush () {
                             state.SBonRandom =prettifydrei(state.SBonRandom+0.001);
                             state.CBonShow =prettify(state.CBonShow+0.1);
                             state.SBonShow =prettify(state.SBonShow-0.1);  
+                            document.getElementById("SBonRandom").innerText =state.SBonRandom; //Delete later
                             document.getElementById("UBonRandom").innerText =state.UBonRandom; //Delete later
                             document.getElementById("CBon").innerText =state.CBonShow;
                             document.getElementById("SBon").innerText =state.SBonShow;
@@ -1464,8 +1466,8 @@ function CBonsaiverkaufen () {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisCBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toFixed(2);
         if (state.PreisCBonsai>1200) {
-            state.PreisCBonsai -=50;
-            document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toFixed(2)
+            state.PreisCBonsai -=25;
+            document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai
         }
     }
 }
@@ -1477,8 +1479,8 @@ function UBonsaiverkaufen () {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisUBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toFixed(2);
         if (state.PreisUBonsai>1500) {
-            state.PreisUBonsai =prettifyzwei(state.PreisUBonsai-218.75);
-            document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai.toFixed(2)
+            state.PreisUBonsai -=140;
+            document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai
         }
     }
 }
@@ -1490,8 +1492,8 @@ function SBonsaiverkaufen () {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisSBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toFixed(2);
         if (state.PreisSBonsai>3000) {
-            state.PreisSBonsai =prettify(state.PreisSBonsai-1062.5);
-            document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toFixed(2)
+            state.PreisSBonsai -=850;
+            document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai
         }
     }
 }
@@ -1503,8 +1505,8 @@ function LBonsaiverkaufen () {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisLBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toFixed(2);
         if (state.PreisLBonsai>10000) {
-            state.PreisLBonsai -=5625;
-            document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai.toFixed(2)
+            state.PreisLBonsai -=5000;
+            document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai
         }
     }
 }
