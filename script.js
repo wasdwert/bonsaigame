@@ -229,7 +229,7 @@ window.onload = function () {
         document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume)
         document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen)
         document.getElementById("KlickGeld").innerText =state.GeldproKlick.toLocaleString('en', {minimumFractionDigits: 1});
-        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel.toLocaleString('en'));
+        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel);
         document.getElementById("KlickErdnuss").innerText =state.ErdnussproKlick;
         document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel.toLocaleString('en');
         document.getElementById("KlickErdnussbaum").innerText =state.ErdnussbaumproKlick;
@@ -647,7 +647,7 @@ function GeldDoppel() {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisGeldDoppel);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisGeldDoppel = state.PreisGeldDoppel*4;
-        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel.toLocaleString('en'));
+        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel);
     }
 }
 
