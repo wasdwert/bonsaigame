@@ -121,6 +121,7 @@ function save() {
 }
 
 function reset() {
+    gtag('event', 'Reset');
     localStorage.clear(); //LocalStorage cleared
     document.location.reload(true)
 }
@@ -425,7 +426,7 @@ setInterval(function Autosave() {
     state.zeitstamp +=1;
     state.zeitautosave = new Date
     document.getElementById("ZeitAutosave").innerText ="Autosaved";
-    ga('event', 'Autosave');
+    gtag('event', 'Autosave');
 }, 30000)
 
 setInterval(function() {
