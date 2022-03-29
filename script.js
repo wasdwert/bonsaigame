@@ -117,7 +117,7 @@ function save() {
     localStorage.setItem('state', JSON.stringify(state));
     document.getElementById("ZeitAutosave").innerText ="Saved";
     state.zeitstamp +=1;
-    ga('send', 'event', 'Bonsai game', 'Save');
+    gtag('send', 'event', 'Bonsai game', 'Save');
 }
 
 function reset() {
@@ -425,7 +425,7 @@ setInterval(function Autosave() {
     state.zeitstamp +=1;
     state.zeitautosave = new Date
     document.getElementById("ZeitAutosave").innerText ="Autosaved";
-    ga('send', 'event', 'Bonsai game', 'Autosave');
+    gtag('send', 'event', 'Bonsai game', 'Autosave');
 }, 30000)
 
 setInterval(function() {
