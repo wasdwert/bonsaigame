@@ -2324,7 +2324,7 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             $('.Erdnussbäume').show();
             state.ErdnussbäumeShow =1;
         }
-        if(state.AnzahlGeld>=200 & state.AnzahlErdnüsse>=10){
+        if(state.AnzahlGeld>=200 & state.AnzahlErdnussbäume>=1){
             $('.PreisErdnussbaumDoppel').show();
             state.PreisErdnussbaumDoppelShow =1;
         }
@@ -2332,7 +2332,7 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             $('.Erdnussplantagen').show();
             state.ErdnussplantagenShow =1;
         }
-        if(state.AnzahlGeld>=800 & state.AnzahlErdnussbäume>=10){
+        if(state.AnzahlGeld>=800 & state.AnzahlErdnussplantagen>=1){
             $('.PreisErdnussplantageDoppel').show();
             state.PreisErdnussplantageDoppelShow =1;
         }
