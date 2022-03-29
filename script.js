@@ -275,13 +275,13 @@ window.onload = function () {
         document.getElementById("Bonsaiheranziehen").innerText ="Active";
         }
         document.getElementById("CBonsais").innerText = state.AnzahlCBonsais;
-        document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toLocaleString('en', {minimumFractionDigits: 2});
+        document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toLocaleString('en');
         document.getElementById("UBonsais").innerText = state.AnzahlUBonsais;
-        document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai.toLocaleString('en', {minimumFractionDigits: 2});
+        document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai.toLocaleString('en');
         document.getElementById("SBonsais").innerText = state.AnzahlSBonsais;
-        document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toLocaleString('en', {minimumFractionDigits: 2});
+        document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toLocaleString('en');
         document.getElementById("LBonsais").innerText = state.AnzahlLBonsais;
-        document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai.toLocaleString('en', {minimumFractionDigits: 2});
+        document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai.toLocaleString('en');
         if (state.RushCycles>9.5) {
             document.getElementById("RushCycleText").innerText ="Maximum reached";
         }
