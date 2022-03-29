@@ -121,8 +121,8 @@ function save() {
 }
 
 function reset() {
-    localStorage.clear(); //LocalStorage cleared
     ga('send', 'event', 'Bonsai game', 'Reset');
+    localStorage.clear(); //LocalStorage cleared
     document.location.reload(true)
 }
 
