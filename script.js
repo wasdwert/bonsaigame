@@ -117,10 +117,12 @@ function save() {
     localStorage.setItem('state', JSON.stringify(state));
     document.getElementById("ZeitAutosave").innerText ="Saved";
     state.zeitstamp +=1;
+    ga('send', 'event', 'Bonsai game', 'Save');
 }
 
 function reset() {
     localStorage.clear(); //LocalStorage cleared
+    ga('send', 'event', 'Bonsai game', 'Reset');
     document.location.reload(true)
 }
 
@@ -419,9 +421,12 @@ window.onload = function () {
 }
 
 setInterval(function Autosave() {
-    save();
+    state.zeitsave = Date.now();
+    localStorage.setItem('state', JSON.stringify(state));
+    state.zeitstamp +=1;
     state.zeitautosave = new Date
     document.getElementById("ZeitAutosave").innerText ="Autosaved";
+    ga('send', 'event', 'Bonsai game', 'Autosave');
 }, 30000)
 
 setInterval(function() {
