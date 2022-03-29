@@ -229,26 +229,26 @@ window.onload = function () {
         document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume)
         document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen)
         document.getElementById("KlickGeld").innerText =state.GeldproKlick.toLocaleString('en', {minimumFractionDigits: 1});
-        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel);
+        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel.toLocaleString('en'));
         document.getElementById("KlickErdnuss").innerText =state.ErdnussproKlick;
-        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel;
+        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel.toLocaleString('en');
         document.getElementById("KlickErdnussbaum").innerText =state.ErdnussbaumproKlick;
-        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel;
+        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel.toLocaleString('en');
         document.getElementById("KlickErdnussplantage").innerText =state.ErdnussplantageproKlick;
-        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel;
-        document.getElementById("PreisWenigerZeitFormen").innerText =state.PreisZeitFormen;
+        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel.toLocaleString('en');
+        document.getElementById("PreisWenigerZeitFormen").innerText =state.PreisZeitFormen.toLocaleString('en');
         document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen-15);
         if (state.ZeitFormen==150) {
             document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen);
             document.getElementById("WenigerZeitMax").innerText ="Max. upgrade reached";
         }
         document.getElementById("ErdnussPreis").innerText =state.ErdnussPreisAll.toLocaleString('en', {minimumFractionDigits: 2});
-        document.getElementById("PreisBessererPreis").innerText =state.PreisBessererPreis;
+        document.getElementById("PreisBessererPreis").innerText =state.PreisBessererPreis.toLocaleString('en');
         if (state.ErdnussPreisAll>=0.3) {
             document.getElementById("PreisBessererPreisMax").innerText ="Max. upgrade reached";
         }
         document.getElementById("GeldproSekunde").innerText =state.GeldproSekunde.toLocaleString('en', {minimumFractionDigits: 1});
-        document.getElementById("PreisAutoSell").innerText =state.PreisAutoSell;
+        document.getElementById("PreisAutoSell").innerText =state.PreisAutoSell.toLocaleString('en');
         document.getElementById("AutoSellErdnuss").innerText =prettify(state.GeldproSekunde+state.GeldAutoSell).toLocaleString('en', {minimumFractionDigits: 1});
         document.getElementById("PreisOffline").innerText =state.PreisOffline;
         if (state.Offline>=1) {
@@ -258,15 +258,15 @@ window.onload = function () {
         else {
             document.getElementById("OfflineProzent").innerText =(state.Offline*100)+10;
         }
-        document.getElementById("PreisRushUpgrade").innerText =state.PreisRushUpgrade;
+        document.getElementById("PreisRushUpgrade").innerText =state.PreisRushUpgrade.toLocaleString('en');
         if (state.RushUpgrade>=10) {
             document.getElementById("RushUpgradeMax").innerText ="Max. upgrade reached";
         }
-        document.getElementById("PreisGeduldUpgrade").innerText =state.PreisGeduldUpgrade;
+        document.getElementById("PreisGeduldUpgrade").innerText =state.PreisGeduldUpgrade.toLocaleString('en');
         if (state.GeduldUpgrade>=10) {
                 document.getElementById("GeduldUpgradeMax").innerText ="Max. upgrade reached";
         }
-        document.getElementById("PreisBessereQualitätBonsai").innerText =state.PreisBessereQualitätBonsai;
+        document.getElementById("PreisBessereQualitätBonsai").innerText =state.PreisBessereQualitätBonsai.toLocaleString('en');
         if (state.QualitätUpgrade>=10) {
             document.getElementById("BessereQualitätMax").innerText ="Max. upgrade reached";
         }
@@ -647,7 +647,7 @@ function GeldDoppel() {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisGeldDoppel);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisGeldDoppel = state.PreisGeldDoppel*4;
-        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel);
+        document.getElementById("PreisGeldDoppel").innerText =prettify(state.PreisGeldDoppel.toLocaleString('en'));
     }
 }
 
@@ -658,7 +658,7 @@ function ErdnussDoppel() {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussDoppel);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussDoppel = state.PreisErdnussDoppel*4;
-        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel;
+        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel.toLocaleString('en');
     }
 }
 
@@ -669,7 +669,7 @@ function ErdnussbaumDoppel() {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussbaumDoppel);
         document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussbaumDoppel = state.PreisErdnussbaumDoppel*4;
-        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel;
+        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel.toLocaleString('en');
     }
 }
 
@@ -680,7 +680,7 @@ function ErdnussplantageDoppel() {
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussplantageDoppel);
         document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussplantageDoppel = state.PreisErdnussplantageDoppel*4;
-        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel;
+        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel.toLocaleString('en');
     }
 }
 
