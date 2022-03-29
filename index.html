@@ -30,37 +30,33 @@
         <div class="item">
             <p style="margin: 5px; font-family:Arial; font-size: 15px"><strong>Money</strong></p>
             <div class="Feld"><p>Money: <span id="Geld">0.00</span></p></div> <!-- span um die 0 zu verändern -->
-            <div class="Feld"><button id=ButtonGrün class=Green onclick="PluseinGeld()">Collect money</button></div> <!-- id für Styleformatierung; onlick für Event +0.10 Geld -->
+            <div class="Feld"><button id=ButtonGrün class=Green onclick="PluseinGeld()">Collect <span id="KlickGeld">0.1</span> money</button></div> <!-- id für Styleformatierung; onlick für Event +0.10 Geld -->
             <div class="AutoSell"><div class="Feld"><p>Money per second: <span id="GeldproSekunde">0.0</span></p></div></div><div class="Placeholder" style="color:white"><div class="Placeholder">Placeholder</div></div>
-            <div class="PreisGeldDoppel"><div class="Feld"><button id=ButtonGeldDoppel onclick="GeldDoppel()">Double money per click<br>(Cost: <span id="PreisGeldDoppel">12.5</span> money)</button><br></div>
-            <div class="Feld"><p>Money per click: <span id="KlickGeld">0.1</span></p></div></div>
+            <div class="PreisGeldDoppel"><div class="Feld"><button id=ButtonGeldDoppel onclick="GeldDoppel()">Double money per click<br>(Cost: <span id="PreisGeldDoppel">12.5</span> money)</button><br></div></div>
         </div>
         
         <div class="item"> 
             <div class="Erdnüsse"><p style="margin: 5px; font-family:Arial; font-size: 15px"><strong>Peanuts</strong></p></div>
             <div class="Erdnüsse"><div class="Feld"><p>Peanuts: <span id="Erdnüsse">0.00</span> (+<span id="ErdnüssepS">0.00</span> ps)</p></div>
-            <div class="Feld"><button id=ButtonErdnüsse onclick="Erdnusskaufen()">Buy peanuts</button></div>
+            <div class="Feld"><button id=ButtonErdnüsse onclick="Erdnusskaufen()">Buy <span id="KlickErdnuss">1</span> peanut/-s</button></div>
             <div class="Feld"><p>Cost: <span id="KostenErdnuss">1.00</span> money</p></div></div>
-            <div class="PreisErdnussDoppel"><div class="Feld"><button id=ButtonErdnussDoppel onclick="ErdnussDoppel()">Double peanuts per click<br>(Cost: <span id="PreisErdnussDoppel">50</span> money)</button><br></div>
-            <div class="Feld"><p>Peanuts per click: <span id="KlickErdnuss">1</span></p></div></div>
+            <div class="PreisErdnussDoppel"><div class="Feld"><button id=ButtonErdnussDoppel onclick="ErdnussDoppel()">Double peanuts per click<br>(Cost: <span id="PreisErdnussDoppel">50</span> money)</button><br></div></div>
         </div>
       
         <div class="item">
             <div class="Erdnussbäume"><p style="margin: 5px; font-family:Arial; font-size: 15px"><strong>Peanut bushes</strong></p>
             <div class="Feld"><p>Peanut bushes: <span id="Erdnussbäume">0.00</span> (+<span id="ErdnussbäumepS">0.00</span> ps)</p></div>
-            <div class="Feld"><button id=ButtonErdnussbäume onclick="Erdnussbaumpflanzen()">Plant peanut bushes<br>(+0.02 peanuts per second)</button></div>
+            <div class="Feld"><button id=ButtonErdnussbäume onclick="Erdnussbaumpflanzen()">Plant <span id="KlickErdnussbaum">1</span> peanut bush/-es<br>(+0.02 peanuts per second)</button></div>
             <div class="Feld"><p>Cost: <span id="KostenErdnussbaum">10.0</span> peanuts</p></div></div>
-            <div class="PreisErdnussbaumDoppel"><div class="Feld"><button id=ButtonErdnussbaumDoppel onclick="ErdnussbaumDoppel()">Double peanut bushes per click<br>(Cost: <span id="PreisErdnussbaumDoppel">200</span> money)</button><br></div>
-            <div class="Feld"><p>Peanut bushes per click: <span id="KlickErdnussbaum">1</span></p></div></div>
+            <div class="PreisErdnussbaumDoppel"><div class="Feld"><button id=ButtonErdnussbaumDoppel onclick="ErdnussbaumDoppel()">Double peanut bushes per click<br>(Cost: <span id="PreisErdnussbaumDoppel">200</span> money)</button><br></div></div>
         </div>
         
         <div class="item">
             <div class="Erdnussplantagen"><p style="margin: 5px; font-family:Arial; font-size: 15px"><strong>Peanut plantations</strong></p>
             <div class="Feld"><p>Peanut plantations: <span id="Erdnussplantagen">0</span></p></div>
-            <div class="Feld"><button id=ButtonErdnussplantagen onclick="Erdnussplantageanbauen()">Build peanut plantations <br>(+0.01 peanut bushes per second)</button></div>
+            <div class="Feld"><button id=ButtonErdnussplantagen onclick="Erdnussplantageanbauen()">Build <span id="KlickErdnussplantage">1</span> peanut plantation/-s <br>(+0.01 peanut bushes per second)</button></div>
             <div class="Feld"><p>Cost: <span id="KostenErdnussplantage">10.0</span> peanut bushes</p></div></div>
-            <div class="PreisErdnussplantageDoppel"><div class="Feld"><button id=ButtonErdnussplantageDoppel onclick="ErdnussplantageDoppel()">Double peanut plantations per click<br>(Cost: <span id="PreisErdnussplantageDoppel">800</span> money)</button><br></div>
-            <div class="Feld"><p>Peanut plantations per click: <span id="KlickErdnussplantage">1</span></p></div></div>
+            <div class="PreisErdnussplantageDoppel"><div class="Feld"><button id=ButtonErdnussplantageDoppel onclick="ErdnussplantageDoppel()">Double peanut plantations per click<br>(Cost: <span id="PreisErdnussplantageDoppel">800</span> money)</button><br></div></div>
         </div>
     </div>
       
