@@ -1,33 +1,334 @@
-#Button {
-    width: 250px;
-	height: 50px;
-	box-shadow: 0 4px 8px 0 #3188cc;
-	border-radius: 8px;
-	transition-duration: 0.3s;
-	cursor: pointer; 
+#ButtonGrün {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #A6D5FA;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
 }
 
-#Feld {
-    border: 2px solid powderblue;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px;
+#ButtonErdnüsse {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonErdnussbäume {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonErdnussplantagen {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonBonsai {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonGeldDoppel {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonErdnussDoppel {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonErdnussbaumDoppel {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonErdnussplantageDoppel {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonCBonsai {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonUBonsai {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonSBonsai {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonLBonsai {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonRush {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonGeduld {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonVerkauf50 {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonVerkauf100 {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonVerkauf200 {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonVerkaufAll {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonBessererPreis {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonAutoSell {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonOffline {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonGeduldUp {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonQualität {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonWenigerZeit {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#ButtonRushUp {
+    box-sizing: border-box;
+    width: 300px;
+	height: 40px;
+	background: #e7e7e7;
+    border: 0px;
+    border-radius: 6px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+.Green:hover{
+       background-color: #4DABF5  !important;
+}
+
+.Grey:hover{
+       background-color: #B8B8B8 !important;
 }
 
 .itemContainer {
+    box-sizing: border-box;
     display: flex; /* using flexbox to align items */
     flex-wrap: wrap; /* to force items on multiple lines */
 }
 
 .item {
-    padding: 0px; /* some spacing around */
-    flex: 25%; /* to put 4 items on each line (100/4 = 25) */
+    box-sizing: border-box;
+    padding: 2px; /* some spacing around */
+    flex: 20%; /* to put 4 items on each line (100/4 = 25) */
 }
 
-.Bonsais {
-    padding: 0px; /* some spacing around */
-    margin: auto;
-    width: 20%;
+.Feld {
+    box-sizing: border-box;
+    width: 303px;
+	height: 43px;
+    border: 2px solid #737373;
+    border-radius: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+.Placeholder {
+    box-sizing: border-box;
+    width: 303px;
+	height: 43px;
+    border-radius: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    display:none;
 }
 
 .PreisGeldDoppel {
@@ -82,15 +383,19 @@
     display:none;
 }
 
+.Placeholder {
+    display:show;
+}
+
+.Offline {
+    display:none;
+}
+
 .BessererPreis {
     display:none;
 }
 
 .Bonsai {
-    display:none;
-}
-
-.Bonsaihandel {
     display:none;
 }
 
@@ -107,5 +412,33 @@
 }
 
 .LBonsaiverkaufen {
+    display:none;
+}
+
+.Step1 {
+    display:show;
+}
+
+.Step2 {
+    display:none;
+}
+
+.Step3 {
+    display:none;
+}
+
+.Step4 {
+    display:none;
+}
+
+.Step5 {
+    display:none;
+}
+
+.Step6 {
+    display:none;
+}
+
+.DevelopmentTools {
     display:none;
 }
