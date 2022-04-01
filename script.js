@@ -17,8 +17,8 @@ var state = {
     PreisErdnussDoppel: 50.0,
     PreisErdnussbaumDoppel: 200.0,
     PreisErdnussplantageDoppel: 800.0,
-    PreisAutoSell: 10,
-    PreisOffline: 1,
+    PreisAutoSell: 25,
+    PreisOffline: 2,
     PreisBessererPreis: 100,
     PreisZeitFormen: 25000,
     PreisRushUpgrade: 25000,
@@ -39,7 +39,6 @@ var state = {
     AnzahlSBonsais: 0,
     AnzahlLBonsais: 0,
     AnzahlMBonsais: 0,
-    ErdnussPreisAll: 0.1,
     RushCycle: 1,
     RushCycles: 0,
     GeduldCycle: 1,
@@ -84,7 +83,6 @@ var state = {
     PreisErdnussbaumDoppelShow: 0,
     ErdnussplantagenShow: 0,
     PreisErdnussplantageDoppelShow: 0,
-    ErdnusshandelShow: 0,
     Erdnusshandel100Show: 0,
     Erdnusshandel200Show: 0,
     Erdnusshandel1000Show: 0,
@@ -92,6 +90,7 @@ var state = {
     AutoSellShow: 0,
     OfflineShow: 0,
     BonsaiShow: 0,
+    BonsaiverkaufenShow: 0,
     CBonsaiverkaufenShow: 0,
     UBonsaiverkaufenShow: 0,
     SBonsaiverkaufenShow: 0,
@@ -110,6 +109,10 @@ var state = {
     randomrest: 0,
     Offline: 0,
     StepShow: 1,
+    percenteins: 1.0,
+    percentzwei: 2.0,
+    percentvier: 4.0,
+    PreisGeldExtra: 12.5,
 }
 
 function save() {
@@ -242,9 +245,11 @@ window.onload = function () {
             document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen);
             document.getElementById("WenigerZeitMax").innerText ="Max. upgrade reached";
         }
-        document.getElementById("ErdnussPreis").innerText =state.ErdnussPreisAll.toLocaleString('en', {minimumFractionDigits: 2});
+        document.getElementById("Percent1").innerText =state.percenteins.toLocaleString('en', {minimumFractionDigits: 1});
+        document.getElementById("Percent2").innerText =state.percentzwei.toLocaleString('en', {minimumFractionDigits: 1});
+        document.getElementById("Percent4").innerText =state.percentvier.toLocaleString('en', {minimumFractionDigits: 1});
         document.getElementById("PreisBessererPreis").innerText =state.PreisBessererPreis.toLocaleString('en');
-        if (state.ErdnussPreisAll>=0.3) {
+        if (state.percenteins>=3) {
             document.getElementById("PreisBessererPreisMax").innerText ="Max. upgrade reached";
         }
         document.getElementById("GeldproSekunde").innerText =state.GeldproSekunde.toLocaleString('en', {minimumFractionDigits: 1});
@@ -313,9 +318,6 @@ window.onload = function () {
             if(state.PreisErdnussplantageDoppelShow==1){
                 $('.PreisErdnussplantageDoppel').show();
             }
-            if(state.ErdnusshandelShow==1){
-                $('.Erdnusshandel').show();
-            }
             if(state.Erdnusshandel100Show==1){
                 $('.Erdnusshandel100').show();
             }
@@ -337,6 +339,9 @@ window.onload = function () {
             }
             if(state.BonsaiShow==1){
                 $('.Bonsai').show();
+            }
+            if(state.BonsaiverkaufenShow==1){
+                $('.Bonsaiverkaufen').show();
             }
             if(state.CBonsaiverkaufenShow==1){
                 $('.CBonsaiverkaufen').show();
@@ -431,7 +436,7 @@ setInterval(function Autosave() {
 
 setInterval(function() {
     if (state.AnzahlErdnussbäume>=0.5) {
-        state.ErdnüsseproSekunde = prettifyzwei(Math.trunc(state.AnzahlErdnussbäume+0.001)/50);
+        state.ErdnüsseproSekunde = prettifyzwei(Math.trunc(state.AnzahlErdnussbäume+0.001)/100);
         document.getElementById("ErdnüssepS").innerText =state.ErdnüsseproSekunde.toLocaleString('en', {minimumFractionDigits: 2});
     }
     else {
@@ -604,113 +609,74 @@ function Erdnussplantageanbauen() {
     } 
 }
 
-function Erdnussverkaufenall() {
-    if (state.AnzahlErdnüsse>=1) {
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(Math.floor(state.AnzahlErdnüsse)*state.ErdnussPreisAll));
-        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-Math.floor(state.AnzahlErdnüsse));
-        document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
-    } 
-}
-
 function Erdnussverkaufenx100() {
-    if (state.AnzahlErdnüsse>=50) {
-        state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-50);
-        document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+15);
-        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+    if (state.AnzahlErdnüsse>=10) {
+        var verkaufen =Math.floor((state.AnzahlErdnüsse/100)*state.percenteins);
+        if (verkaufen>10) {
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-verkaufen);
+            document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.4));
+            document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        }
+        else {
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-10);
+            document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+4);
+            document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        }
     } 
 }
 
 function Erdnussverkaufenx200() {
-    if (state.AnzahlErdnüsse>=100) {
-        state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-100);
-        document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+25);
-        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+    if (state.AnzahlErdnüsse>=25) {
+        var verkaufen =Math.floor((state.AnzahlErdnüsse/100)*state.percentzwei);
+        if (verkaufen>25) {
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-verkaufen);
+            document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.3));
+            document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        }
+        else {
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-25);
+            document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+7.5);
+            document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        }
     } 
 }
 
 function Erdnussverkaufenx1000() {
-    if (state.AnzahlErdnüsse>=200) {
-        state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-200);
-        document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+40);
-        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+    if (state.AnzahlErdnüsse>100) {
+        var verkaufen =Math.floor((state.AnzahlErdnüsse/100)*state.percentvier);
+        if (verkaufen>=100) {
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-verkaufen);
+            document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.25));
+            document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        }
+        else {
+            state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-100);
+            document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+25);
+            document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        }
     } 
 }
 
-function GeldDoppel() {
-    if (state.AnzahlGeld>=state.PreisGeldDoppel) {
-        state.GeldproKlick = prettify(state.GeldproKlick*2);
-        document.getElementById("KlickGeld").innerText =state.GeldproKlick.toLocaleString('en', {minimumFractionDigits: 1});
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisGeldDoppel);
-        document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        state.PreisGeldDoppel =prettify(state.PreisGeldDoppel*4);
-        document.getElementById("PreisGeldDoppel").innerText =state.PreisGeldDoppel.toLocaleString('en');
-    }
-}
-
-function ErdnussDoppel() {
-    if (state.AnzahlGeld>=state.PreisErdnussDoppel) {
-        state.ErdnussproKlick = state.ErdnussproKlick*2;
-        document.getElementById("KlickErdnuss").innerText =state.ErdnussproKlick;
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussDoppel);
-        document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        state.PreisErdnussDoppel = state.PreisErdnussDoppel*4;
-        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel.toLocaleString('en');
-    }
-}
-
-function ErdnussbaumDoppel() {
-    if (state.AnzahlGeld>=state.PreisErdnussbaumDoppel) {
-        state.ErdnussbaumproKlick = state.ErdnussbaumproKlick*2;
-        document.getElementById("KlickErdnussbaum").innerText =state.ErdnussbaumproKlick;
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussbaumDoppel);
-        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        state.PreisErdnussbaumDoppel = state.PreisErdnussbaumDoppel*4;
-        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel.toLocaleString('en');
-    }
-}
-
-function ErdnussplantageDoppel() {
-    if (state.AnzahlGeld>=state.PreisErdnussplantageDoppel) {
-        state.ErdnussplantageproKlick = state.ErdnussplantageproKlick*2;
-        document.getElementById("KlickErdnussplantage").innerText =state.ErdnussplantageproKlick;
-        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussplantageDoppel);
-        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        state.PreisErdnussplantageDoppel = state.PreisErdnussplantageDoppel*4;
-        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel.toLocaleString('en');
-    }
-}
-
-function WenigerZeitFormen() {
-    if (state.AnzahlGeld>=state.PreisZeitFormen) {
-        if (state.ZeitFormen>150) {
-            state.ZeitFormen = Math.floor(state.ZeitFormen-15);
-            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisZeitFormen);
-            document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            state.PreisZeitFormen = Math.floor(state.PreisZeitFormen*2);
-            document.getElementById("PreisWenigerZeitFormen").innerText =state.PreisZeitFormen.toLocaleString('en');
-            document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen-15);
-            if (state.ZeitFormen==150) {
-                document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen);
-                document.getElementById("WenigerZeitMax").innerText ="Max. upgrade reached";
-            }
-        }
-    }
-}
-
-function BessererPreis() {
-    if (state.AnzahlErdnüsse>=state.PreisBessererPreis) {
-        if (state.ErdnussPreisAll<0.3) {
-            state.ErdnussPreisAll =prettifyzwei(state.ErdnussPreisAll+0.01);
-            document.getElementById("ErdnussPreis").innerText =state.ErdnussPreisAll.toLocaleString('en', {minimumFractionDigits: 2});
+function MehrProzent() {
+    if (state.AnzahlErdnüsse>=state.PreisBessererPreis) { 
+        if (state.percenteins<3) {
+            state.percenteins =prettifyzwei(state.percenteins+0.1);
+            state.percentzwei =prettifyzwei(state.percentzwei+0.2);
+            state.percentvier =prettifyzwei(state.percentvier+0.3);
+            document.getElementById("Percent1").innerText =state.percenteins.toLocaleString('en', {minimumFractionDigits: 1});
+            document.getElementById("Percent2").innerText =state.percentzwei.toLocaleString('en', {minimumFractionDigits: 1});
+            document.getElementById("Percent4").innerText =state.percentvier.toLocaleString('en', {minimumFractionDigits: 1});
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-state.PreisBessererPreis);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.PreisBessererPreis = state.PreisBessererPreis*2;
             document.getElementById("PreisBessererPreis").innerText =state.PreisBessererPreis.toLocaleString('en');
-            if (state.ErdnussPreisAll>=0.3) {
+            if (state.percenteins>=3) {
                 document.getElementById("PreisBessererPreisMax").innerText ="Max. upgrade reached";
             }
         }
@@ -732,13 +698,75 @@ function AutoSell() {
     }
 }
 
+function GeldDoppel() {
+    if (state.AnzahlGeld>=state.PreisGeldDoppel) {
+        state.GeldproKlick = prettify(state.GeldproKlick*2);
+        document.getElementById("KlickGeld").innerText =state.GeldproKlick.toLocaleString('en', {minimumFractionDigits: 1});
+        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisGeldDoppel);
+        document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        state.PreisGeldExtra =prettify(state.PreisGeldExtra*2);
+        state.PreisGeldDoppel =prettify(state.PreisGeldDoppel*2+state.PreisGeldExtra);
+        document.getElementById("PreisGeldDoppel").innerText =state.PreisGeldDoppel.toLocaleString('en');
+    }
+}
+
+function ErdnussDoppel() {
+    if (state.AnzahlGeld>=state.PreisErdnussDoppel) {
+        state.ErdnussproKlick = state.ErdnussproKlick*2;
+        document.getElementById("KlickErdnuss").innerText =state.ErdnussproKlick;
+        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussDoppel);
+        document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        state.PreisErdnussDoppel = state.PreisErdnussDoppel*3;
+        document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel.toLocaleString('en');
+    }
+}
+
+function ErdnussbaumDoppel() {
+    if (state.AnzahlGeld>=state.PreisErdnussbaumDoppel) {
+        state.ErdnussbaumproKlick = state.ErdnussbaumproKlick*2;
+        document.getElementById("KlickErdnussbaum").innerText =state.ErdnussbaumproKlick;
+        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussbaumDoppel);
+        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        state.PreisErdnussbaumDoppel = state.PreisErdnussbaumDoppel*4;
+        document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel.toLocaleString('en');
+    }
+}
+
+function ErdnussplantageDoppel() {
+    if (state.AnzahlGeld>=state.PreisErdnussplantageDoppel) {
+        state.ErdnussplantageproKlick = state.ErdnussplantageproKlick*2;
+        document.getElementById("KlickErdnussplantage").innerText =state.ErdnussplantageproKlick;
+        state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisErdnussplantageDoppel);
+        document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        state.PreisErdnussplantageDoppel = state.PreisErdnussplantageDoppel*5;
+        document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel.toLocaleString('en');
+    }
+}
+
+function WenigerZeitFormen() {
+    if (state.AnzahlGeld>=state.PreisZeitFormen) {
+        if (state.ZeitFormen>150) {
+            state.ZeitFormen = Math.floor(state.ZeitFormen-15);
+            state.AnzahlGeld =prettifyzwei(state.AnzahlGeld-state.PreisZeitFormen);
+            document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            state.PreisZeitFormen = Math.floor(state.PreisZeitFormen*2);
+            document.getElementById("PreisWenigerZeitFormen").innerText =state.PreisZeitFormen.toLocaleString('en');
+            document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen-15);
+            if (state.ZeitFormen==150) {
+                document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen);
+                document.getElementById("WenigerZeitMax").innerText ="Max. upgrade reached";
+            }
+        }
+    }
+}
+
 function Offline() {
     if (state.AnzahlErdnussplantagen>=state.PreisOffline) {
         if (state.Offline<1) {
             state.Offline =prettify(state.Offline+0.1);
             state.AnzahlErdnussplantagen =state.AnzahlErdnussplantagen-state.PreisOffline;
             document.getElementById("Erdnussplantagen").innerText = state.AnzahlErdnussplantagen;
-            state.PreisOffline = state.PreisOffline*2;
+            state.PreisOffline = (state.PreisOffline*2)+6;
             document.getElementById("PreisOffline").innerText =state.PreisOffline;
             if (state.Offline>=1) {
                 document.getElementById("OfflineMax").innerText ="Max. upgrade reached";
@@ -2336,27 +2364,23 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             $('.PreisErdnussplantageDoppel').show();
             state.PreisErdnussplantageDoppelShow =1;
         }
-        if(state.AnzahlErdnüsse>=500){
-            $('.Erdnusshandel').show();
-            state.ErdnusshandelShow =1;
-        }
-        if(state.AnzahlErdnüsse>=50){
+        if(state.AnzahlErdnüsse>=10){
             $('.Erdnusshandel100').show();
             state.Erdnusshandel100Show =1;
         }
-        if(state.AnzahlErdnüsse>=100){
+        if(state.AnzahlErdnüsse>=25){
             $('.Erdnusshandel200').show();
             state.Erdnusshandel200Show =1;
         }
-        if(state.AnzahlErdnüsse>=200){
+        if(state.AnzahlErdnüsse>=100){
             $('.Erdnusshandel1000').show();
             state.Erdnusshandel1000Show =1;
         }
-        if(state.AnzahlErdnussbäume>=10 || state.AnzahlGeld>=1000 || state.AnzahlErdnussplantagen>=1){
+        if(state.AnzahlGeld>=1000 || state.AnzahlErdnussplantagen>=1){
             $('.Upgrades').show();
             state.UpgradesShow= 1;
         }
-        if(state.AnzahlErdnussbäume>=10){
+        if(state.AnzahlErdnussbäume>=25){
             $('.AutoSell').show();
             $('.Placeholder').hide();
             state.AutoSellShow =1;
@@ -2368,6 +2392,10 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
         if(state.AnzahlGeld>=1000){
             $('.Bonsai').show();
             state.BonsaiShow =1;
+        }
+        if(state.AnzahlCBonsais>=1 || state.AnzahlUBonsais>=1 || state.AnzahlSBonsais>=1 || state.AnzahlLBonsais>=1){
+            $('.Bonsaiverkaufen').show();
+            state.BonsaiverkaufenShow =1;
         }
         if(state.AnzahlCBonsais>=1){
             $('.CBonsaiverkaufen').show();
@@ -2664,7 +2692,7 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
                 document.getElementById("ButtonGeduld").style.background = "#e7e7e7";
             }
         }
-        if (state.AnzahlErdnüsse>=50){
+        if (state.AnzahlErdnüsse>=10){
             var Button=document.getElementById('ButtonVerkauf50');
             /* Clear all previous hover classes */
             Button.classList.remove('Grey','Green');
@@ -2680,7 +2708,7 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             Button.classList.add('Grey');
             document.getElementById("ButtonVerkauf50").style.background = "#e7e7e7";
         }
-        if (state.AnzahlErdnüsse>=100){
+        if (state.AnzahlErdnüsse>=25){
             var Button=document.getElementById('ButtonVerkauf100');
             /* Clear all previous hover classes */
             Button.classList.remove('Grey','Green');
@@ -2696,7 +2724,7 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             Button.classList.add('Grey');
             document.getElementById("ButtonVerkauf100").style.background = "#e7e7e7";
         }
-        if (state.AnzahlErdnüsse>=200){
+        if (state.AnzahlErdnüsse>=100){
             var Button=document.getElementById('ButtonVerkauf200');
             /* Clear all previous hover classes */
             Button.classList.remove('Grey','Green');
@@ -2712,37 +2740,31 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             Button.classList.add('Grey');
             document.getElementById("ButtonVerkauf200").style.background = "#e7e7e7";
         }
-        if (state.AnzahlErdnüsse>=1){
-            var Button=document.getElementById('ButtonVerkaufAll');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonVerkaufAll").style.background = "#A6D5FA";
-        }
-        else {
-            var Button=document.getElementById('ButtonVerkaufAll');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Grey');
-            document.getElementById("ButtonVerkaufAll").style.background = "#e7e7e7";
-        }
         if (state.AnzahlErdnüsse>=state.PreisBessererPreis){
-            var Button=document.getElementById('ButtonBessererPreis');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonBessererPreis").style.background = "#A6D5FA";
+            if (state.percenteins>=3) {
+                var Button=document.getElementById('ButtonMehrProzent');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Grey');
+                document.getElementById("ButtonMehrProzent").style.background = "#e7e7e7";
+            }
+            else {
+                var Button=document.getElementById('ButtonMehrProzent');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Green');
+                document.getElementById("ButtonMehrProzent").style.background = "#A6D5FA";
+            }
         }
         else {
-            var Button=document.getElementById('ButtonBessererPreis');
+            var Button=document.getElementById('ButtonMehrProzent');
             /* Clear all previous hover classes */
             Button.classList.remove('Grey','Green');
             /* Set the desired hover class */
             Button.classList.add('Grey');
-            document.getElementById("ButtonBessererPreis").style.background = "#e7e7e7";
+            document.getElementById("ButtonMehrProzent").style.background = "#e7e7e7";
         }
         if (state.AnzahlErdnussbäume>=state.PreisAutoSell){
             var Button=document.getElementById('ButtonAutoSell');
@@ -2761,12 +2783,22 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             document.getElementById("ButtonAutoSell").style.background = "#e7e7e7";
         }
         if (state.AnzahlErdnussplantagen>=state.PreisOffline){
-            var Button=document.getElementById('ButtonOffline');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonOffline").style.background = "#A6D5FA";
+            if (state.Offline>=1) {
+                var Button=document.getElementById('ButtonOffline');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Grey');
+                document.getElementById("ButtonOffline").style.background = "#e7e7e7";
+            }
+            else {    
+                var Button=document.getElementById('ButtonOffline');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Green');
+                document.getElementById("ButtonOffline").style.background = "#A6D5FA";
+            }
         }
         else {
             var Button=document.getElementById('ButtonOffline');
@@ -2777,12 +2809,22 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             document.getElementById("ButtonOffline").style.background = "#e7e7e7";
         }
         if (state.AnzahlGeld>=state.PreisGeduldUpgrade){
-            var Button=document.getElementById('ButtonGeduldUp');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonGeduldUp").style.background = "#A6D5FA";
+            if (state.GeduldUpgrade>=30) {
+                var Button=document.getElementById('ButtonGeduldUp');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Grey');
+                document.getElementById("ButtonGeduldUp").style.background = "#e7e7e7"
+            }
+            else {
+                var Button=document.getElementById('ButtonGeduldUp');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Green');
+                document.getElementById("ButtonGeduldUp").style.background = "#A6D5FA";
+            }
         }
         else {
             var Button=document.getElementById('ButtonGeduldUp');
@@ -2793,12 +2835,22 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             document.getElementById("ButtonGeduldUp").style.background = "#e7e7e7";
         }
         if (state.AnzahlGeld>=state.PreisBessereQualitätBonsai){
-            var Button=document.getElementById('ButtonQualität');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonQualität").style.background = "#A6D5FA";
+            if (state.QualitätUpgrade>=30) {
+                var Button=document.getElementById('ButtonQualität');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Grey');
+                document.getElementById("ButtonQualität").style.background = "#e7e7e7";
+            }
+            else {
+                var Button=document.getElementById('ButtonQualität');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Green');
+                document.getElementById("ButtonQualität").style.background = "#A6D5FA";
+            }
         }
         else {
             var Button=document.getElementById('ButtonQualität');
@@ -2809,12 +2861,22 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             document.getElementById("ButtonQualität").style.background = "#e7e7e7";
         }
         if (state.AnzahlGeld>=state.PreisZeitFormen){
-            var Button=document.getElementById('ButtonWenigerZeit');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonWenigerZeit").style.background = "#A6D5FA";
+            if (state.ZeitFormen==150) {
+                var Button=document.getElementById('ButtonWenigerZeit');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Grey');
+                document.getElementById("ButtonWenigerZeit").style.background = "#e7e7e7";
+            }
+            else {
+                var Button=document.getElementById('ButtonWenigerZeit');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Green');
+                document.getElementById("ButtonWenigerZeit").style.background = "#A6D5FA";
+            }
         }
         else {
             var Button=document.getElementById('ButtonWenigerZeit');
@@ -2825,12 +2887,22 @@ setInterval(function() { //0,1 Sekunde Intervallfunktion für Random Percantage 
             document.getElementById("ButtonWenigerZeit").style.background = "#e7e7e7";
         }
         if (state.AnzahlGeld>=state.PreisRushUpgrade){
-            var Button=document.getElementById('ButtonRushUp');
-            /* Clear all previous hover classes */
-            Button.classList.remove('Grey','Green');
-            /* Set the desired hover class */
-            Button.classList.add('Green');
-            document.getElementById("ButtonRushUp").style.background = "#A6D5FA";
+            if (state.RushUpgrade>=10) {
+                var Button=document.getElementById('ButtonRushUp');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Grey');
+                document.getElementById("ButtonRushUp").style.background = "#e7e7e7";
+            }
+            else {
+                var Button=document.getElementById('ButtonRushUp');
+                /* Clear all previous hover classes */
+                Button.classList.remove('Grey','Green');
+                /* Set the desired hover class */
+                Button.classList.add('Green');
+                document.getElementById("ButtonRushUp").style.background = "#A6D5FA";
+            }
         }
         else {
             var Button=document.getElementById('ButtonRushUp');
