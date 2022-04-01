@@ -196,18 +196,7 @@
     font-size: 15px;
 }
 
-#ButtonVerkaufAll {
-    box-sizing: border-box;
-    width: 300px;
-	height: 40px;
-	background: #e7e7e7;
-    border: 0px;
-    border-radius: 6px;
-    font-family: Arial;
-    font-size: 15px;
-}
-
-#ButtonBessererPreis {
+#ButtonMehrProzent {
     box-sizing: border-box;
     width: 300px;
 	height: 40px;
@@ -296,12 +285,39 @@
     box-sizing: border-box;
     display: flex; /* using flexbox to align items */
     flex-wrap: wrap; /* to force items on multiple lines */
+    justify-content: space-evenly;
 }
 
 .item {
     box-sizing: border-box;
     padding: 2px; /* some spacing around */
     flex: 20%; /* to put 4 items on each line (100/4 = 25) */
+}
+
+.Title {
+    box-sizing: border-box;
+    width: 303px;
+	height: 40px;
+    border-radius: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+.TitleOptions {
+    box-sizing: border-box;
+    width: 303px;
+	height: 30px;
+    border-radius: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
 }
 
 .Feld {
@@ -317,6 +333,21 @@
     align-items: center;
     margin: 2px;
 }
+
+.FeldBonsai {
+    box-sizing: border-box;
+    width: 240px;
+	height: 43px;
+    border: 2px solid #737373;
+    border-radius: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
 .Placeholder {
     box-sizing: border-box;
     width: 303px;
@@ -329,6 +360,20 @@
     align-items: center;
     margin: 2px;
     display:none;
+}
+
+.Placeholder2 {
+    box-sizing: border-box;
+    width: 303px;
+	height: 1px;
+    border-radius: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    display:show;
 }
 
 .PreisGeldDoppel {
@@ -356,10 +401,6 @@
 }
 
 .PreisErdnussplantageDoppel {
-    display:none;
-}
-
-.Erdnusshandel {
     display:none;
 }
 
@@ -396,6 +437,10 @@
 }
 
 .Bonsai {
+    display:none;
+}
+
+.Bonsaiverkaufen {
     display:none;
 }
 
