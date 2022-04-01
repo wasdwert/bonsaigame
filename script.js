@@ -1,5 +1,5 @@
 var state = {
-    AnzahlGeld: 0,
+    AnzahlGeld: 99999999999999999,
     AnzahlErdnüsse: 0,
     AnzahlErdnussbäume: 0,
     AnzahlErdnussplantagen: 0,
