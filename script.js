@@ -165,23 +165,23 @@ window.onload = function () {
                 state.BonsaiGrowth =0;
                 if (state.Random>=prettifydrei(state.MBonRandom)) {
                     state.AnzahlMBonsais +=1;
-                    gtag('event', 'Mythical Bonsai');
+                    gtag('event', 'Grown: Mythical bonsai');
                 }
                 else if (state.Random>=prettifydrei(state.LBonRandom)) {
                     state.AnzahlLBonsais +=1;
-                    gtag('event', 'Legendary Bonsai');
+                    gtag('event', 'Grown: Legendary bonsai');
                 }
                 else if (state.Random>=prettifydrei(state.SBonRandom)) {
                     state.AnzahlSBonsais +=1;
-                    gtag('event', 'Special Bonsai');
+                    gtag('event', 'Grown: Special bonsai');
                 }
                 else if (state.Random>=prettifydrei(state.UBonRandom)) {
                     state.AnzahlUBonsais +=1;
-                    gtag('event', 'Uncommon Bonsai');
+                    gtag('event', 'Grown: Uncommon bonsai');
                 }
                 else {
                     state.AnzahlCBonsais +=1;
-                    gtag('event', 'Common Bonsai');
+                    gtag('event', 'Grown: Common bonsai');
                 }  
                 state.BonsaiGrowing=0
                 state.RushCycle =1;
@@ -367,54 +367,54 @@ window.onload = function () {
             if (state.Erdnüssewhileaway>0) {
                 if (state.Erdnussbäumewhileaway>0) {
                     if (state.Bonsaiwhileaway>0) {
-                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.\nA bonsai grew!");  
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" money while being away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" peanut bushes while being away.\nA bonsai grew!");  
                     }
                     else {
-                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.");
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" money while being away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" peanut bushes while being away.");
                     }
                 }
                 else {
                     if (state.Bonsaiwhileaway>0) {
-                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nA bonsai grew!");  
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" money while being away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\nA bonsai grew!");  
                     }
                     else {
-                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\n");
+                        alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" money while being away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\n");
                     }
                 }
             }
             else {
                 if (state.Bonsaiwhileaway>0) {
-                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\nA bonsai grew!");  
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" money while being away.\nA bonsai grew!");  
                 }
                 else {
-                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" Geld while being away.\n");
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Geldwhileaway +" money while being away.\n");
                 }
             }
         }
         else if (state.Erdnüssewhileaway>0) {
             if (state.Erdnussbäumewhileaway>0) {
                 if (state.Bonsaiwhileaway>0) {
-                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.\nA bonsai grew!");  
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" peanut bushes while being away.\nA bonsai grew!");  
                 }
                 else {
-                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.");
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\nYou have earned "+ state.Erdnussbäumewhileaway +" peanut bushes while being away.");
                 }
             }
             else {
                 if (state.Bonsaiwhileaway>0) {
-                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\nA bonsai grew! ");  
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\nA bonsai grew! ");  
                 }
                 else {
-                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" Erdnüsse while being away.\n");
+                    alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnüssewhileaway +" peanuts while being away.\n");
                 }
             }
         }
         else if (state.Erdnussbäumewhileaway>0) {
             if (state.Bonsaiwhileaway>0) {
-                alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.\nA bonsai grew!");  
+                alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnussbäumewhileaway +" peanut bushes while being away.\nA bonsai grew!");  
             }
             else {
-                alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnussbäumewhileaway +" Erdnussbäume while being away.");
+                alert("You have been "+ state.zeitsincesave +" seconds away.\nYou have earned "+ state.Erdnussbäumewhileaway +" peanut bushes while being away.");
             }
         }
         else {
@@ -490,27 +490,27 @@ setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekund
         if (state.BonsaiGrowth==0) {
             if (state.Random>=prettifydrei(state.MBonRandom)) {
                 state.AnzahlMBonsais +=1;
-                gtag('event', 'Mythical Bonsai');
+                gtag('event', 'Grown: Mythical bonsai');
                 document.getElementById("MBonsais").innerText =state.AnzahlMBonsais;
             }
             else if (state.Random>=prettifydrei(state.LBonRandom)) {
                 state.AnzahlLBonsais +=1;
-                gtag('event', 'Legendary Bonsai');
+                gtag('event', 'Grown: Legendary bonsai');
                 document.getElementById("LBonsais").innerText =state.AnzahlLBonsais;
             }
             else if (state.Random>=prettifydrei(state.SBonRandom)) {
                 state.AnzahlSBonsais +=1;
-                gtag('event', 'Special Bonsai');
+                gtag('event', 'Grown: Special bonsai');
                 document.getElementById("SBonsais").innerText =state.AnzahlSBonsais;
             }
             else if (state.Random>=prettifydrei(state.UBonRandom)) {
                 state.AnzahlUBonsais +=1;
-                gtag('event', 'Uncommon Bonsai');
+                gtag('event', 'Grown: Uncommon bonsai');
                 document.getElementById("UBonsais").innerText =state.AnzahlUBonsais;
             }
             else {
                 state.AnzahlCBonsais +=1;
-                gtag('event', 'Common Bonsai');
+                gtag('event', 'Grown: Common bonsai');
                 document.getElementById("CBonsais").innerText =state.AnzahlCBonsais;
             }  
             state.BonsaiGrowing=0
@@ -682,9 +682,9 @@ function Erdnussverkaufenx1000() {
 function MehrProzent() {
     if (state.AnzahlErdnüsse>=state.PreisBessererPreis) { 
         if (state.percenteins<3) {
-            state.percenteins =prettifyzwei(state.percenteins+0.1);
-            state.percentzwei =prettifyzwei(state.percentzwei+0.2);
-            state.percentvier =prettifyzwei(state.percentvier+0.3);
+            state.percenteins =prettify(state.percenteins+0.1);
+            state.percentzwei =prettify(state.percentzwei+0.2);
+            state.percentvier =prettify(state.percentvier+0.3);
             document.getElementById("Percent1").innerText =state.percenteins.toLocaleString('en', {minimumFractionDigits: 1});
             document.getElementById("Percent2").innerText =state.percentzwei.toLocaleString('en', {minimumFractionDigits: 1});
             document.getElementById("Percent4").innerText =state.percentvier.toLocaleString('en', {minimumFractionDigits: 1});
