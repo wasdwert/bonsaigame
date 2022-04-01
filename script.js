@@ -1,5 +1,5 @@
 var state = {
-    AnzahlGeld: 99999999999999999,
+    AnzahlGeld: 999999999999999,
     AnzahlErdnüsse: 0,
     AnzahlErdnussbäume: 0,
     AnzahlErdnussplantagen: 0,
@@ -263,11 +263,11 @@ window.onload = function () {
             document.getElementById("RushUpgradeMax").innerText ="Max. upgrade reached";
         }
         document.getElementById("PreisGeduldUpgrade").innerText =state.PreisGeduldUpgrade.toLocaleString('en');
-        if (state.GeduldUpgrade>=10) {
+        if (state.GeduldUpgrade>=30) {
                 document.getElementById("GeduldUpgradeMax").innerText ="Max. upgrade reached";
         }
         document.getElementById("PreisBessereQualitätBonsai").innerText =state.PreisBessereQualitätBonsai.toLocaleString('en');
-        if (state.QualitätUpgrade>=10) {
+        if (state.QualitätUpgrade>=30) {
             document.getElementById("BessereQualitätMax").innerText ="Max. upgrade reached";
         }
         if (state.BonsaiGrowing==1) {
