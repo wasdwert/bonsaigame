@@ -131,6 +131,7 @@ function reset() {
 
 window.onload = function () {
     if (localStorage.getItem('state') == null) {
+        gtag('event', 'New');
         document.getElementById("ZeitAutosave").innerText ='New';
         state.zeitstamp +=1;
         state.zeitsave = Date.now();
@@ -138,6 +139,7 @@ window.onload = function () {
         state.zeitstart = Date.now();
      }
     else {
+        gtag('event', 'Load');
         state = JSON.parse(localStorage.getItem('state'));
         document.getElementById("ZeitAutosave").innerText ='Loaded';
         state.zeitstamp +=1;
@@ -163,18 +165,23 @@ window.onload = function () {
                 state.BonsaiGrowth =0;
                 if (state.Random>=prettifydrei(state.MBonRandom)) {
                     state.AnzahlMBonsais +=1;
+                    gtag('event', 'Mythical Bonsai');
                 }
                 else if (state.Random>=prettifydrei(state.LBonRandom)) {
                     state.AnzahlLBonsais +=1;
+                    gtag('event', 'Legendary Bonsai');
                 }
                 else if (state.Random>=prettifydrei(state.SBonRandom)) {
                     state.AnzahlSBonsais +=1;
+                    gtag('event', 'Special Bonsai');
                 }
                 else if (state.Random>=prettifydrei(state.UBonRandom)) {
                     state.AnzahlUBonsais +=1;
+                    gtag('event', 'Uncommon Bonsai');
                 }
                 else {
                     state.AnzahlCBonsais +=1;
+                    gtag('event', 'Common Bonsai');
                 }  
                 state.BonsaiGrowing=0
                 state.RushCycle =1;
@@ -483,22 +490,27 @@ setInterval(function() { //1 Sekunde Intervallfunktion für Erdnüsse pro Sekund
         if (state.BonsaiGrowth==0) {
             if (state.Random>=prettifydrei(state.MBonRandom)) {
                 state.AnzahlMBonsais +=1;
+                gtag('event', 'Mythical Bonsai');
                 document.getElementById("MBonsais").innerText =state.AnzahlMBonsais;
             }
             else if (state.Random>=prettifydrei(state.LBonRandom)) {
                 state.AnzahlLBonsais +=1;
+                gtag('event', 'Legendary Bonsai');
                 document.getElementById("LBonsais").innerText =state.AnzahlLBonsais;
             }
             else if (state.Random>=prettifydrei(state.SBonRandom)) {
                 state.AnzahlSBonsais +=1;
+                gtag('event', 'Special Bonsai');
                 document.getElementById("SBonsais").innerText =state.AnzahlSBonsais;
             }
             else if (state.Random>=prettifydrei(state.UBonRandom)) {
                 state.AnzahlUBonsais +=1;
+                gtag('event', 'Uncommon Bonsai');
                 document.getElementById("UBonsais").innerText =state.AnzahlUBonsais;
             }
             else {
                 state.AnzahlCBonsais +=1;
+                gtag('event', 'Common Bonsai');
                 document.getElementById("CBonsais").innerText =state.AnzahlCBonsais;
             }  
             state.BonsaiGrowing=0
@@ -617,12 +629,14 @@ function Erdnussverkaufenx100() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.4));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            gtag('event', 'Sold 1% Peanuts');
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-10);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+4);
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            gtag('event', 'Sold 1% Peanuts');
         }
     } 
 }
@@ -635,12 +649,14 @@ function Erdnussverkaufenx200() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.3));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            gtag('event', 'Sold 2% Peanuts');
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-25);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+7.5);
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            gtag('event', 'Sold 2% Peanuts');
         }
     } 
 }
@@ -653,12 +669,14 @@ function Erdnussverkaufenx1000() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.25));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            gtag('event', 'Sold 3% Peanuts');
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-100);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+25);
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+            gtag('event', 'Sold 3% Peanuts');
         }
     } 
 }
@@ -676,8 +694,10 @@ function MehrProzent() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.PreisBessererPreis = state.PreisBessererPreis*2;
             document.getElementById("PreisBessererPreis").innerText =state.PreisBessererPreis.toLocaleString('en');
+            gtag('event', 'Upgrade: Higher Percentage');
             if (state.percenteins>=3) {
                 document.getElementById("PreisBessererPreisMax").innerText ="Max. upgrade reached";
+                gtag('event', 'Upgrade: Higher Percentage - Maximum');
             }
         }
     }
@@ -691,6 +711,7 @@ function AutoSell() {
         document.getElementById("Erdnussbäume").innerText = state.AnzahlErdnussbäume.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisAutoSell = state.PreisAutoSell*2;
         document.getElementById("PreisAutoSell").innerText =state.PreisAutoSell.toLocaleString('en');
+        gtag('event', 'Auto Sell');
         if (state.GeldproSekunde>=0.2) {
             state.GeldAutoSell =prettify(state.GeldAutoSell*2);
         }
@@ -707,6 +728,7 @@ function GeldDoppel() {
         state.PreisGeldExtra =prettify(state.PreisGeldExtra*2);
         state.PreisGeldDoppel =prettify(state.PreisGeldDoppel*2+state.PreisGeldExtra);
         document.getElementById("PreisGeldDoppel").innerText =state.PreisGeldDoppel.toLocaleString('en');
+        gtag('event', 'Doubled: Money');
     }
 }
 
@@ -718,6 +740,7 @@ function ErdnussDoppel() {
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussDoppel = state.PreisErdnussDoppel*3;
         document.getElementById("PreisErdnussDoppel").innerText =state.PreisErdnussDoppel.toLocaleString('en');
+        gtag('event', 'Doubled: Peanuts');
     }
 }
 
@@ -729,6 +752,7 @@ function ErdnussbaumDoppel() {
         document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussbaumDoppel = state.PreisErdnussbaumDoppel*4;
         document.getElementById("PreisErdnussbaumDoppel").innerText =state.PreisErdnussbaumDoppel.toLocaleString('en');
+        gtag('event', 'Doubled: Bushes');
     }
 }
 
@@ -740,6 +764,7 @@ function ErdnussplantageDoppel() {
         document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussplantageDoppel = state.PreisErdnussplantageDoppel*5;
         document.getElementById("PreisErdnussplantageDoppel").innerText =state.PreisErdnussplantageDoppel.toLocaleString('en');
+        gtag('event', 'Doubled: Plantations');
     }
 }
 
@@ -752,9 +777,11 @@ function WenigerZeitFormen() {
             state.PreisZeitFormen = Math.floor(state.PreisZeitFormen*2);
             document.getElementById("PreisWenigerZeitFormen").innerText =state.PreisZeitFormen.toLocaleString('en');
             document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen-15);
+            gtag('event', 'Upgrade: Quicker growing');
             if (state.ZeitFormen==150) {
                 document.getElementById("WenigerZeit").innerText =Zeit(state.ZeitFormen);
                 document.getElementById("WenigerZeitMax").innerText ="Max. upgrade reached";
+                gtag('event', 'Upgrade: Quicker growing - Maximum');
             }
         }
     }
@@ -768,9 +795,11 @@ function Offline() {
             document.getElementById("Erdnussplantagen").innerText = state.AnzahlErdnussplantagen;
             state.PreisOffline = (state.PreisOffline*2)+6;
             document.getElementById("PreisOffline").innerText =state.PreisOffline;
+            gtag('event', 'Upgrade: Offline gaining');
             if (state.Offline>=1) {
                 document.getElementById("OfflineMax").innerText ="Max. upgrade reached";
                 document.getElementById("OfflineProzent").innerText =state.Offline*100;
+                gtag('event', 'Upgrade: Offline gaining - Maximum');
             }
             else {
             document.getElementById("OfflineProzent").innerText =(state.Offline*100)+10;
@@ -787,8 +816,10 @@ function BonsaiRushUpgrade() {
             state.PreisRushUpgrade =state.PreisRushUpgrade*2;
             document.getElementById("PreisRushUpgrade").innerText =state.PreisRushUpgrade.toLocaleString('en');
             state.RushUpgrade =Math.floor(state.RushUpgrade+1);
+            gtag('event', 'Upgrade: Rushing');
             if (state.RushUpgrade>=10) {
                 document.getElementById("RushUpgradeMax").innerText ="Max. upgrade reached";
+                gtag('event', 'Upgrade: Rushing - Maximum');
             }
         }
     }
@@ -832,8 +863,10 @@ function BonsaiGeduldUpgrade() {
             if (state.GeduldUpgrade==10 || state.GeduldUpgrade==20 || state.GeduldUpgrade==30) {
                 state.GeduldUpgrade10 +=1;
             }
+            gtag('event', 'Upgrade: Patience');
             if (state.GeduldUpgrade>=30) {
                 document.getElementById("GeduldUpgradeMax").innerText ="Max. upgrade reached";
+                gtag('event', 'Upgrade: Patience - Maximum');
             }
         }
     }
@@ -947,8 +980,10 @@ function BessereQualitätBonsai() {
         state.PreisBessereQualitätBonsai =state.PreisBessereQualitätBonsai*2;
         document.getElementById("PreisBessereQualitätBonsai").innerText =state.PreisBessereQualitätBonsai.toLocaleString('en');
         state.QualitätUpgrade =Math.floor(state.QualitätUpgrade+1);
+        gtag('event', 'Upgrade: Quality');
         if (state.QualitätUpgrade>=30) {
             document.getElementById("BessereQualitätMax").innerText ="Max. upgrade reached";
+            gtag('event', 'Upgrade: Quality - Maximum');
         }
     }
 }
@@ -2285,6 +2320,7 @@ function CBonsaiverkaufen () {
         document.getElementById("CBonsais").innerText = state.AnzahlCBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisCBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        gtag('event', 'Common bonsai sold');
         if (state.PreisCBonsai>1200) {
             state.PreisCBonsai -=25;
             document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toLocaleString('en')
@@ -2298,6 +2334,7 @@ function UBonsaiverkaufen () {
         document.getElementById("UBonsais").innerText =state.AnzahlUBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisUBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        gtag('event', 'Uncommon bonsai sold');
         if (state.PreisUBonsai>1500) {
             state.PreisUBonsai -=140;
             document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai.toLocaleString('en')
@@ -2311,6 +2348,7 @@ function SBonsaiverkaufen () {
         document.getElementById("SBonsais").innerText =state.AnzahlSBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisSBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        gtag('event', 'Special bonsai sold');
         if (state.PreisSBonsai>3000) {
             state.PreisSBonsai -=850;
             document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toLocaleString('en')
@@ -2324,6 +2362,7 @@ function LBonsaiverkaufen () {
         document.getElementById("LBonsais").innerText =state.AnzahlLBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisLBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+        gtag('event', 'Legendary bonsai sold');
         if (state.PreisLBonsai>10000) {
             state.PreisLBonsai -=5000;
             document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai.toLocaleString('en')
