@@ -565,6 +565,7 @@ function HighscoreZeit (input) {
     var hrs=Math.floor((input/60/60)-(day*24))
     var min=Math.floor((input/60)-(day*24*60+hrs*60));
     var sec=input-(day*24*60*60+hrs*60*60+min*60);
+    gtag('event', 'Win in: '+day+' days and '+hrs+' hours');
     return day+" days, "+hrs+" hours, "+min+" minutes and "+sec;
 }
 
@@ -629,14 +630,13 @@ function Erdnussverkaufenx100() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.4));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold 1% Peanuts');
+            gtag('event', 'Sold: '+state.percenteins+'% Peanuts');
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-10);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+4);
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold 1% Peanuts');
         }
     } 
 }
@@ -649,14 +649,13 @@ function Erdnussverkaufenx200() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.3));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold 2% Peanuts');
+            gtag('event', 'Sold: '+state.percentzwei+'% Peanuts');
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-25);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+7.5);
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold 2% Peanuts');
         }
     } 
 }
@@ -669,14 +668,13 @@ function Erdnussverkaufenx1000() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.25));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold 3% Peanuts');
+            gtag('event', 'Sold: '+state.percentvier+'% Peanuts');
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-100);
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+25);
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold 3% Peanuts');
         }
     } 
 }
@@ -2320,7 +2318,7 @@ function CBonsaiverkaufen () {
         document.getElementById("CBonsais").innerText = state.AnzahlCBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisCBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        gtag('event', 'Common bonsai sold');
+        gtag('event', 'Sold: Common bonsai');
         if (state.PreisCBonsai>1200) {
             state.PreisCBonsai -=25;
             document.getElementById("PreisCBonsai").innerText = state.PreisCBonsai.toLocaleString('en')
@@ -2334,7 +2332,7 @@ function UBonsaiverkaufen () {
         document.getElementById("UBonsais").innerText =state.AnzahlUBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisUBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        gtag('event', 'Uncommon bonsai sold');
+        gtag('event', 'Sold: Uncommon bonsai');
         if (state.PreisUBonsai>1500) {
             state.PreisUBonsai -=140;
             document.getElementById("PreisUBonsai").innerText = state.PreisUBonsai.toLocaleString('en')
@@ -2348,7 +2346,7 @@ function SBonsaiverkaufen () {
         document.getElementById("SBonsais").innerText =state.AnzahlSBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisSBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        gtag('event', 'Special bonsai sold');
+        gtag('event', 'Sold: Special bonsai');
         if (state.PreisSBonsai>3000) {
             state.PreisSBonsai -=850;
             document.getElementById("PreisSBonsai").innerText = state.PreisSBonsai.toLocaleString('en')
@@ -2362,7 +2360,7 @@ function LBonsaiverkaufen () {
         document.getElementById("LBonsais").innerText =state.AnzahlLBonsais;
         state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.PreisLBonsai);
         document.getElementById("Geld").innerText = state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-        gtag('event', 'Legendary bonsai sold');
+        gtag('event', 'Sold: Legendary bonsai');
         if (state.PreisLBonsai>10000) {
             state.PreisLBonsai -=5000;
             document.getElementById("PreisLBonsai").innerText = state.PreisLBonsai.toLocaleString('en')
