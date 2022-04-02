@@ -110,9 +110,13 @@ var state = {
     Offline: 0,
     StepShow: 1,
     percenteins: 1.0,
+    percenteinsevent: 0,
     percentzwei: 2.0,
+    percentzweievent: 0,
     percentvier: 4.0,
+    percentvierevent: 0,
     PreisGeldExtra: 12.5,
+    geldevent: 0,
 }
 
 function save() {
@@ -587,6 +591,11 @@ function prettifydrei(input) { //Um drei Dezimalstellen anzuzeigen
 function PluseinGeld() { //Kommentar
     state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.GeldproKlick);
     document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
+    state.geldevent +=1;
+    if (state.geldevent==10) {
+        gtag('event', 'Clicked: Money (10x)');  
+        state.geldevent =0;
+    }
 }
 
 function Erdnusskaufen() {
@@ -597,6 +606,7 @@ function Erdnusskaufen() {
         document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnüsse=prettifyzwei(state.PreisErdnüsse*1.01);
         document.getElementById("KostenErdnuss").innerText =state.PreisErdnüsse;
+        gtag('event', 'Clicked: Peanuts');  
     } 
 }
 
@@ -608,6 +618,7 @@ function Erdnussbaumpflanzen() {
         document.getElementById("Erdnussbäume").innerText =state.AnzahlErdnussbäume.toLocaleString('en', {minimumFractionDigits: 2});
         state.PreisErdnussbäume=prettify(state.PreisErdnussbäume*1.05);
         document.getElementById("KostenErdnussbaum").innerText =prettify(state.PreisErdnussbäume);
+        gtag('event', 'Clicked: Peanut bushes'); 
     } 
 }
 
@@ -619,6 +630,7 @@ function Erdnussplantageanbauen() {
         document.getElementById("Erdnussplantagen").innerText = state.AnzahlErdnussplantagen;
         state.PreisErdnussplantagen =prettify(state.PreisErdnussplantagen*1.1);
         document.getElementById("KostenErdnussplantage").innerText =prettify(state.PreisErdnussplantagen);
+        gtag('event', 'Clicked: Peanut plantations'); 
     } 
 }
 
@@ -630,7 +642,11 @@ function Erdnussverkaufenx100() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.4));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold: '+state.percenteins+'% Peanuts');
+            state.percenteinsevent +=1;
+            if (state.percenteinsevent==10) {
+            gtag('event', 'Sold: '+state.percenteins+'% Peanuts (10x)');  
+            state.percenteinsevent =0;
+            }
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-10);
@@ -649,7 +665,11 @@ function Erdnussverkaufenx200() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.3));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold: '+state.percentzwei+'% Peanuts');
+            state.percentzweievent +=1;
+            if (state.percentzweievent==10) {
+            gtag('event', 'Sold: '+state.percentzwei+'% Peanuts (10x)');  
+            state.percentzweievent =0;    
+            }
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-25);
@@ -668,7 +688,11 @@ function Erdnussverkaufenx1000() {
             document.getElementById("Erdnüsse").innerText =state.AnzahlErdnüsse.toLocaleString('en', {minimumFractionDigits: 2});
             state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+(verkaufen*0.25));
             document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
-            gtag('event', 'Sold: '+state.percentvier+'% Peanuts');
+            state.percentvierevent +=1;
+            if (state.percentvierevent==10) {
+            gtag('event', 'Sold: '+state.percentvier+'% Peanuts (10x)');  
+            state.percentvierevent =0;
+            }
         }
         else {
             state.AnzahlErdnüsse =prettifyzwei(state.AnzahlErdnüsse-100);
