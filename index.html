@@ -38,80 +38,80 @@
         
     <div class="itemContainer">
         <div class="item">
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Title"><img src="Images/money.svg" width="35" height="35"><p><strong>&nbsp;Money</strong></p></div>
             <div class="Feld"><p>Money: <span id="Geld">0.00</span></p></div> <!-- span um die 0 zu verändern -->
             <div class="Feld"><button id=ButtonGrün class=Green onclick="PluseinGeld()">Collect <span id="KlickGeld">0.1</span> money</button></div> <!-- id für Styleformatierung; onlick für Event +0.10 Geld -->
             <div class="AutoSell"><div class="Feld"><p>Money per second: <span id="GeldproSekunde">0.0</span></p></div></div><div class="Placeholder"></div>
-            <div class="PreisGeldDoppel"><div class="Feld"><button id=ButtonGeldDoppel onclick="GeldDoppel()">Double money per click<br>(Cost: <span id="PreisGeldDoppel">12.5</span> money)</button><br></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
+            <div class="PreisGeldDoppel"><div class="Feld"><button id=ButtonGeldDoppel onclick="GeldDoppel()">Double money per click<br>(Cost: <span id="PreisGeldDoppel">12.5</span> money)</button></div></div>
         </div>
         
         <div class="item">
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Erdnüsse"><div class="Title"><img src="Images/peanut.svg" width="35" height="35"><p><strong>&nbsp;Peanuts</strong></p></div>
             <div class="Feld"><p>Peanuts: <span id="Erdnüsse">0.00</span> (+<span id="ErdnüssepS">0.00</span> ps)</p></div>
             <div class="Feld"><button id=ButtonErdnüsse onclick="Erdnusskaufen()">Buy <span id="KlickErdnuss">1</span> peanut/-s</button></div>
             <div class="Feld"><p>Cost: <span id="KostenErdnuss">1.00</span> money</p></div></div>
-            <div class="PreisErdnussDoppel"><div class="Feld"><button id=ButtonErdnussDoppel onclick="ErdnussDoppel()">Double peanuts per click<br>(Cost: <span id="PreisErdnussDoppel">50</span> money)</button><br></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
+            <div class="PreisErdnussDoppel"><div class="Feld"><button id=ButtonErdnussDoppel onclick="ErdnussDoppel()">Double peanuts per click<br>(Cost: <span id="PreisErdnussDoppel">50</span> money)</button></div></div>
         </div>
       
         <div class="item">
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Erdnussbäume"><div class="Title"><img src="Images/bush.svg" width="40" height="40"><p><strong>&nbsp;Peanut bushes</strong></p></div>
             <div class="Feld"><p>Peanut bushes: <span id="Erdnussbäume">0.00</span> (+<span id="ErdnussbäumepS">0.00</span> ps)</p></div>
             <div class="Feld"><button id=ButtonErdnussbäume onclick="Erdnussbaumpflanzen()">Plant <span id="KlickErdnussbaum">1</span> peanut bush/-es<br>(+0.01 peanuts per second)</button></div>
             <div class="Feld"><p>Cost: <span id="KostenErdnussbaum">10.0</span> peanuts</p></div></div>
-            <div class="PreisErdnussbaumDoppel"><div class="Feld"><button id=ButtonErdnussbaumDoppel onclick="ErdnussbaumDoppel()">Double peanut bushes per click<br>(Cost: <span id="PreisErdnussbaumDoppel">200</span> money)</button><br></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
+            <div class="PreisErdnussbaumDoppel"><div class="Feld"><button id=ButtonErdnussbaumDoppel onclick="ErdnussbaumDoppel()">Double peanut bushes per click<br>(Cost: <span id="PreisErdnussbaumDoppel">200</span> money)</button></div></div>
         </div>
         
         <div class="item">
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Erdnussplantagen"><div class="Title"><img src="Images/plantation.svg" width="40" height="40"><p><strong>&nbsp;Peanut plantations</strong></p></div>
             <div class="Feld"><p>Peanut plantations: <span id="Erdnussplantagen">0</span></p></div>
             <div class="Feld"><button id=ButtonErdnussplantagen onclick="Erdnussplantageanbauen()">Build <span id="KlickErdnussplantage">1</span> peanut plantation/-s <br>(+0.01 peanut bushes per second)</button></div>
             <div class="Feld"><p>Cost: <span id="KostenErdnussplantage">10.0</span> peanut bushes</p></div></div>
-            <div class="PreisErdnussplantageDoppel"><div class="Feld"><button id=ButtonErdnussplantageDoppel onclick="ErdnussplantageDoppel()">Double peanut plantations per click<br>(Cost: <span id="PreisErdnussplantageDoppel">800</span> money)</button><br></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
+            <div class="PreisErdnussplantageDoppel"><div class="Feld"><button id=ButtonErdnussplantageDoppel onclick="ErdnussplantageDoppel()">Double peanut plantations per click<br>(Cost: <span id="PreisErdnussplantageDoppel">800</span> money)</button></div></div>
         </div>
     </div>
       
     <div class="itemContainer">    
         <div class="item">        
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Upgrades"><div class="Title"><img src="Images/upgrade.svg" width="35" height="35"><p><strong>&nbsp;Upgrades</strong></p></div></div>
             <div class="Offline"><div class="Feld"><button id=ButtonOffline onclick="Offline()"><span id="OfflineProzent">10</span>% passive income when offline<br>(<span id="OfflineMax">Cost: <span id="PreisOffline">2</span> peanut plantation/-s</span>)</button></div></div>
             <div class="Bonsai"><div class="Feld"><button id=ButtonGeduldUp onclick="BonsaiGeduldUpgrade()">Better quality through longer growing<br>(<span id="GeduldUpgradeMax">Cost: <span id="PreisGeduldUpgrade">5,000</span> money</span>)</button><br></div>
             <div class="Feld"><button id=ButtonQualität onclick="BessereQualitätBonsai()">Permanent better bonsai quality<br>(<span id="BessereQualitätMax">Cost: <span id="PreisBessereQualitätBonsai">10,000</span> money</span>)</button><br></div>
             <div class="Feld"><button id=ButtonWenigerZeit onclick="WenigerZeitFormen()">New bonsai grows in: <span id="WenigerZeit">4:45</span> minutes<br>(<span id="WenigerZeitMax">Cost: <span id="PreisWenigerZeitFormen">25,000</span> money</span>)</button><br></div>
             <div class="Feld"><button id=ButtonRushUp onclick="BonsaiRushUpgrade()">Less quality loss through quicker growing<br>(<span id="RushUpgradeMax">Cost: <span id="PreisRushUpgrade">25,000</span> money</span>)</button></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
         </div>
         
         <div class="item">        
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Erdnusshandel100"><div class="Title"><img src="Images/trade_pfm.svg" width="40" height="40"><p><strong>&nbsp;Peanut trade</strong></p></div>
             <div class="Feld"><button id=ButtonVerkauf50 onclick="Erdnussverkaufenx100()">Sell <span id="Percent1">1.0</span>% of peanuts (or at least 10)<br>(+0.40 money per peanut)</button><br></div></div>   
             <div class="Erdnusshandel200"><div class="Feld"><button id=ButtonVerkauf100 onclick="Erdnussverkaufenx200()">Sell <span id="Percent2">2.0</span>% of peanuts (or at least 25)<br>(+0.30 money per peanut)</button><br></div></div>
             <div class="Erdnusshandel1000"><div class="Feld"><button id=ButtonVerkauf200 onclick="Erdnussverkaufenx1000()">Sell <span id="Percent4">4.0</span>% of peanuts (or at least 100)<br>(+0.25 money per peanut)</button><br></div>
             <div class="Feld"><button id=ButtonMehrProzent onclick="MehrProzent()">Higher percentage for selling peanuts<br>(<span id="PreisBessererPreisMax">Cost: <span id="PreisBessererPreis">100</span> peanuts</span>)</button></div></div>
             <div class="AutoSell"><div class="Feld"><button id=ButtonAutoSell onclick="AutoSell()">Auto sell (<span id="AutoSellErdnuss">0.1</span> money per second)<br>(Cost: <span id="PreisAutoSell">25</span> peanut bushes)</button><br></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
         </div>
         
         <div class="item">        
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Bonsai"><div class="Title"><img src="Images/bonsai.svg" width="40" height="40"><p><strong>&nbsp;Grow a bonsai</strong></p></div>
             <div class="Feld"><button id=ButtonBonsai onclick="Bonsaikaufen()">Buy a bonsai seed and grow it<br>(1,000 money)</button></div>
             <div class="Feld"><p>Bonsai growing: <span id="Bonsaiheranziehen">Not active</span><br>Finished in: <span id="ZeitBonsaiheranziehen">-</span> minutes</p></div>
             <div class="Feld"><button id=ButtonRush class=Grey onclick="BonsaiRush()">Quicker growing<br>(<span id="RushCycleText">-1 second</span>)</button></div>
             <div class="Feld"><button id=ButtonGeduld class=Grey onclick="BonsaiGeduld()">Longer growing<br>(<span id="GeduldCycleText">+5 seconds</span>)</button></div>
             <div class="Feld"><p>Bonsai quality chances:<br><span id="CBon">62.0</span>% / <span id="UBon">26.0</span>% / <span id="SBon">10.0</span>% / <span id="LBon">2.0</span>% / <span id="MBon">0.0</span>%</p></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
         </div>
         
         <div class="item">  
+            <div class="Placeholder2" style="color:white"></div>
             <div class="Bonsaiverkaufen"><div class="Title"><img src="Images/trade_bfm.svg" width="40" height="40"><p><strong>&nbsp;Bonsai trade</strong></p></div></div>
             <div class="CBonsaiverkaufen"><div class="Feld"><button id=ButtonCBonsai onclick="CBonsaiverkaufen()">Sell common bonsai<br>(+<span id="PreisCBonsai">2,000</span> money)</button></div></div>
             <div class="UBonsaiverkaufen"><div class="Feld"><button id=ButtonUBonsai onclick="UBonsaiverkaufen()">Sell uncommon bonsai<br>(+<span id="PreisUBonsai">5,000</span> money)</button></div></div>
             <div class="SBonsaiverkaufen"><div class="Feld"><button id=ButtonSBonsai onclick="SBonsaiverkaufen()">Sell special bonsai<br>(+<span id="PreisSBonsai">20,000</span> money)</button></div></div>
             <div class="LBonsaiverkaufen"><div class="Feld"><button id=ButtonLBonsai onclick="LBonsaiverkaufen()">Sell legendary bonsai<br>(+<span id="PreisLBonsai">100,000</span> money)</button></div></div>
-            <div class="Placeholder2" style="color:white"><div class="Placeholder"></div></div>
         </div>
     </div>   
     
