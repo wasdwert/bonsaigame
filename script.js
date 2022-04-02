@@ -442,7 +442,11 @@ setInterval(function Autosave() {
     state.zeitstamp +=1;
     state.zeitautosave = new Date
     document.getElementById("ZeitAutosave").innerText ="Autosaved";
-    gtag('event', 'Autosave');
+    state.saveevent +=1;
+    if (state.saveevent==5) {
+        gtag('event', 'Autosave (5x)'); 
+        state.saveevent =0;
+    }
 }, 30000)
 
 setInterval(function() {
@@ -592,8 +596,8 @@ function PluseinGeld() { //Kommentar
     state.AnzahlGeld =prettifyzwei(state.AnzahlGeld+state.GeldproKlick);
     document.getElementById("Geld").innerText =state.AnzahlGeld.toLocaleString('en', {minimumFractionDigits: 2});
     state.geldevent +=1;
-    if (state.geldevent==10) {
-        gtag('event', 'Clicked: Money (10x)');  
+    if (state.geldevent==20) {
+        gtag('event', 'Clicked: Money (20x)');  
         state.geldevent =0;
     }
 }
