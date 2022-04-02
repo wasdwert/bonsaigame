@@ -117,6 +117,7 @@ var state = {
     percentvierevent: 0,
     PreisGeldExtra: 12.5,
     geldevent: 0,
+    saveevent: 0,
 }
 
 function save() {
